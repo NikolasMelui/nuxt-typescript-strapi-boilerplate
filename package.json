@@ -1,0 +1,17 @@
+{
+  "name": "multikey-strapi-template",
+  "version": "0.0.1",
+  "description": "Multikey Strapi Template powered by NikolasMelui and RinatDav for Multikey Studio.",
+  "author": "nikolasmelui <slak@samaradom.ru",
+  "scripts": {
+    "install": "(cd server && npm install) && (cd client && npm install)",
+    "build": "concurrently \"cd server && npm run build\"  \"cd client && npm run build\"",
+    "start": "(cd server && npm run start:pm2) && (cd client && npm run start:pm2)",
+    "start:db": "docker-compose up -d",
+    "restart": "(cd server && npm run restart:pm2) && (cd client && npm run restart:pm2)",
+    "stop": "(cd server && npm run stop:pm2) && (cd client && npm run stop:pm2)"
+  },
+  "dependencies": {
+    "concurrently": "^4.1.0"
+  }
+}
