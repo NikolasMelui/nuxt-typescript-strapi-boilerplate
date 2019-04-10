@@ -1,0 +1,17 @@
+image: williamyeh/ansible:mini-alpine3
+
+deploy_production:
+  stage: deploy
+  environment:
+    name: production
+    url: https://your-project-url.com
+  before_script:
+    - apk add --update openssh-client -y
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+  script:
+    - ssh -o StrictHostKeyChecking=no $USER_NAME@$REMOTE_ADDRESS "cd $WORK_DIR; git checkout master; git pull origin master; npm run install; npm run build; npm run restart"
+  only:
+    - master
