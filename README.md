@@ -1,13 +1,36 @@
 
 # Multikey-strapi-template
 
-Multikey Modx Template powered by [NikolasMelui][nikolasmelui] and [RinatDav][rinatdav] for [multikey.studio][multikeystudio]
+🌈 Multikey Strapi Template powered by [NikolasMelui][nikolasmelui] and [RinatDav][rinatdav] for [multikey.studio][multikeystudio]
 
 ***
 
-You need to install [Nodejs][nodejs] first.
+## Requirements
 
-## Quickstart
+Operating system:
+
+* Ubuntu/Debian
+* CentOS/RHEL
+* MacOS
+* Windows
+
+Node:
+
+* NodeJS >= 10.x
+* NPM >= 6.x
+
+Database:
+
+* MongoDB >= 3.6
+* MySQL >= 5.6
+* MariaDB >= 10.1
+* PostgreSQL >= 10
+
+### Installation
+
+```bash
+npm i && npm run install
+```
 
 ### Development
 
@@ -65,4 +88,3 @@ SOFTWARE.
    [strapi]: <https://www.strapi.io/>
    [nodejs]: <http://nodejs.org>
    [typescript]: <http://typescriptlang.org>
-   [russian-docs]: <https://github.com/NikolasMelui/multikey-modx-template/blob/master/README-ru.md>
