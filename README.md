@@ -9,6 +9,73 @@ You need to install [Nodejs][nodejs] first.
 
 ## Quickstart
 
+You also need:
+
+- [Mognodb][mongodb]
+- [Strapi][nodejs]
+
+If you need, you can create a new MySQL database for new MODX Revo project, but usually Gitify creates it automatically.
+If you want to do it yourself:
+* __db_name__ - your db name;
+* __user_name__ - your user name;
+* __user_password__ - your user password;
+```
+$ mysql -u root -p
+mysql> CREATE DATABASE db_name;
+mysql> GRANT ALL PRIVILEGES ON db_name.* TO **user_name**@localhost IDENTIFIED BY 'user_password';
+```
+
+## Installation
+
+First install [Gitify][gitify]:
+```
+$ git clone https://github.com/modmore/Gitify.git Gitify
+$ cd Gitify
+$ composer install
+$ chmod +x Gitify
+```
+
+Create a directory for the new project and cd into it:
+```
+$ mkdir ${new_project} && cd ${new_project}
+```
+Clone the template on your local mashine into created directory:
+```
+$ git clone https://github.com/NikolasMelui/multikey-modx-template.git ./
+```
+Install the latest MODX Revo version:
+```
+$ Gitify modx:install
+```
+Install packages:
+```
+$ Gitify package:install --all
+```
+Now build the project installation:
+```
+$ Gitify build --force
+```
+
+Use this sh script (if you need) to add necessary rules for files and folders:
+```
+$ sh rules.sh
+```
+
+And now you have a ready-made template.
+
+### Quick Start
+
+Use npm to install frontend dependencies and run browserSync and watchers to realy 'reactive' development:
+```
+$ npm i
+$ npm run dev
+```
+
+... and this command (if you need) to create a minified frontend files:
+```
+$ npm run prod
+```
+
 ### Development
 
 Want to contribute? Great!
