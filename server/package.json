@@ -1,14 +1,15 @@
 {
-  "name": "server",
+  "name": "multikey-strapi-template-server",
   "private": true,
   "version": "0.1.0",
-  "description": "A Strapi application.",
+  "description": "Server side of Multikey Strapi Template powered by NikolasMelui and RinatDav for Multikey Studio.",
   "main": "./server.js",
   "scripts": {
     "setup": "cd admin && npm run setup",
     "dev": "strapi start",
     "start": "node server.js",
     "strapi": "node_modules/strapi/bin/strapi.js",
+    "build": "echo 'Server was already builded.'",
     "start:pm2": "pm2 start ecosystem.config.js",
     "restart:pm2": "pm2 restart ecosystem.config.js",
     "stop:pm2": "pm2 stop ecosystem.config.js",
@@ -32,13 +33,13 @@
   },
   "author": {
     "name": "nikolasmelui",
-    "email": "",
+    "email": "slak@samaradom.ru",
     "url": ""
   },
   "maintainers": [
     {
       "name": "nikolasmelui",
-      "email": "",
+      "email": "slak@samaradom.ru",
       "url": ""
     }
   ],
