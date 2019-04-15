@@ -9,6 +9,9 @@
     "dev": "strapi start",
     "start": "node server.js",
     "strapi": "node_modules/strapi/bin/strapi.js",
+    "start:pm2": "pm2 start ecosystem.config.js",
+    "restart:pm2": "pm2 restart ecosystem.config.js",
+    "stop:pm2": "pm2 stop ecosystem.config.js",
     "lint": "node_modules/.bin/eslint api/**/*.js config/**/*.js plugins/**/*.js",
     "postinstall": "node node_modules/strapi/lib/utils/post-install.js"
   },
