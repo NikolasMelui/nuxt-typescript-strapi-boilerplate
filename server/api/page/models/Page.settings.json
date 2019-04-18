@@ -1,0 +1,52 @@
+{
+  "connection": "default",
+  "collectionName": "pages",
+  "info": {
+    "name": "page",
+    "description": "Страницы проекта"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "title_ru": {
+      "default": "",
+      "type": "string",
+      "required": true
+    },
+    "title_en": {
+      "default": "",
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "default": "",
+      "unique": true,
+      "minLength": 2,
+      "type": "string",
+      "required": true
+    },
+    "seotitle": {
+      "default": "",
+      "type": "string"
+    },
+    "seodescription": {
+      "default": "",
+      "type": "string"
+    },
+    "seokeywords": {
+      "default": "",
+      "type": "string"
+    },
+    "content_ru": {
+      "default": "",
+      "type": "text"
+    },
+    "content_en": {
+      "default": "",
+      "type": "text"
+    }
+  }
+}
