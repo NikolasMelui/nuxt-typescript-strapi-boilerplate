@@ -1,0 +1,17 @@
+{
+  "host": "localhost",
+  "port": 1337,
+  "proxy": {
+    "enabled": false
+  },
+  "autoReload": {
+    "enabled": true
+  },
+  "cron": {
+    "enabled": false
+  },
+  "admin": {
+    "autoOpen": false,
+    "path": "/dashboard"
+  }
+}

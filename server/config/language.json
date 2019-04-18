@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "defaultLocale": "ru_ru",
+  "modes": [
+    "query",
+    "subdomain",
+    "cookie",
+    "header",
+    "url",
+    "tld"
+  ],
+  "cookieName": "locale"
+}

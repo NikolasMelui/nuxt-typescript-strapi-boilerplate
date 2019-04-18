@@ -1,0 +1,12 @@
+{
+  "routes": [
+    {
+      "method": "POST",
+      "path": "/mailers/leadmailer",
+      "handler": "Mailer.leadmailer",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
