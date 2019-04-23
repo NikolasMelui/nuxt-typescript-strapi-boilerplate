@@ -1,8 +1,19 @@
 {
   "name": "multikey-strapi-template",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Multikey Strapi Template powered by NikolasMelui and RinatDav for Multikey Studio.",
-  "author": "nikolasmelui <slak@samaradom.ru",
+  "author": {
+    "name": "nikolasmelui",
+    "email": "slak@samaradom.ru",
+    "url": "https://github.com/nikolasmelui"
+  },
+  "maintainers": [
+    {
+      "name": "nikolasmelui",
+      "email": "slak@samaradom.ru",
+      "url": "https://github.com/nikolasmelui"
+    }
+  ],
   "scripts": {
     "install": "(cd server && npm install) && (cd client && npm install)",
     "build": "concurrently \"cd server && npm run build\"  \"cd client && npm run build\"",
