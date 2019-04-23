@@ -1,8 +1,21 @@
 {
   "name": "multikey-strapi-template-server",
+  "license": "MIT",
   "private": true,
   "version": "0.1.0",
   "description": "Server side of Multikey Strapi Template powered by NikolasMelui and RinatDav for Multikey Studio.",
+  "author": {
+    "name": "nikolasmelui",
+    "email": "slak@samaradom.ru",
+    "url": "https://github.com/nikolasmelui"
+  },
+  "maintainers": [
+    {
+      "name": "nikolasmelui",
+      "email": "slak@samaradom.ru",
+      "url": "https://github.com/nikolasmelui"
+    }
+  ],
   "main": "./server.js",
   "scripts": {
     "setup": "cd admin && npm run setup",
@@ -33,18 +46,6 @@
     "strapi-hook-bookshelf": "3.0.0-alpha.25.2",
     "strapi-hook-knex": "3.0.0-alpha.25.2"
   },
-  "author": {
-    "name": "nikolasmelui",
-    "email": "slak@samaradom.ru",
-    "url": "https://multikey.studio"
-  },
-  "maintainers": [
-    {
-      "name": "nikolasmelui",
-      "email": "slak@samaradom.ru",
-      "url": "https://multikey.studio"
-    }
-  ],
   "strapi": {
     "packageManager": "npm",
     "uuid": "438e4825-cbd4-4e70-a9a8-ef31fde5e3be"
@@ -53,5 +54,4 @@
     "node": ">= 10.0.0",
     "npm": ">= 6.0.0"
   },
-  "license": "MIT"
 }
