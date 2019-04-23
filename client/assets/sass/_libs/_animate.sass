@@ -1,0 +1,621 @@
+
+.preloader-enter-active, .preloader-leave-active
+	transition: 0.5s
+.preloader-enter, .preloader-leave-to
+	opacity: 0
+	transition: 0.5s
+
+.item-image
+	position: relative
+	background-color: $d
+	&::after
+		content: ''
+		position: absolute
+		top: 0
+		left: 0
+		width: 101%
+		height: 100%
+		background-color: $d
+		z-index: 100
+		display: block
+
+.item-image-mask
+	.item
+		.item-desc
+			opacity: 0
+		.item-image
+			transform: translateY(50%)
+			&::after
+				transform-origin: 0 100%
+		&:nth-child(1)
+			.item-desc
+				transition: opacity 0.5s 0s
+			.item-image
+				transition: transform 1s 0s
+				&::after
+					transition: transform 1s 0.25s
+				img
+					transition: mask-size 1s 0.25s
+		&:nth-child(2)
+			.item-desc
+				transition: opacity 0.5s 0.25s
+			.item-image
+				transition: transform 1s 0.25s
+				&::after
+					transition: transform 1s 0.5s
+				img
+					transition: mask-size 1s 0.5s
+		&:nth-child(3)
+			.item-desc
+				transition: opacity 0.5s 0.5s
+			.item-image
+				transition: transform 1s 0.5s
+				&::after
+					transition: transform 1s 0.75s
+				img
+					transition: mask-size 1s 0.75s
+	.btn
+		opacity: 0
+		transition: opacity 0.5s 1.25s
+.item-image-mask.animate
+	.item
+		.item-desc
+			opacity: 1
+		.item-image
+			transform: translateY(0)
+			&::after
+				transform: scaleY(0)
+
+.item-fade
+	.item
+		opacity: 0
+		&:nth-child(1)
+			transition: opacity 0.5s 0s
+		&:nth-child(2)
+			transition: opacity 0.5s 0.15s
+		&:nth-child(3)
+			transition: opacity 0.5s 0.3s
+		&:nth-child(4)
+			transition: opacity 0.5s 0.45s
+		&:nth-child(5)
+			transition: opacity 0.5s 0.6s
+		&:nth-child(6)
+			transition: opacity 0.5s 0.75s
+.item-fade.animate
+	.item
+		opacity: 1
+
+.callback-map-anim
+	.item-desc
+		opacity: 0
+		transition: opacity 0.5s
+	.item-image
+		transform: translateX(100%)
+		transition: transform 0.5s 0.25s
+		img
+			transition: transform 2s 1s
+			transform-origin: 50% 50%
+		&::after
+			transform-origin: 100% 0
+			transition: transform 0.5s 0.5s
+	#callback-main-map-block
+		.callback
+			.caption
+				opacity: 0
+				transition: 0.5s 0.75s
+		.callback-wrap
+			&::before, &::after
+				width: 0
+				transition: width 0.5s 0.85s
+	.form-group
+		opacity: 0
+		&:nth-child(1)
+			transition: opacity 0.5s 1s
+		&:nth-child(2)
+			transition: opacity 0.5s 1.1s
+
+.callback-map-anim.animate
+	.item-desc
+		opacity: 1
+	.item-image
+		transform: translateX(0)
+		img
+			transform: scale(2)
+		&::after
+			transform: scaleX(0)
+	#callback-main-map-block
+		.callback
+			.caption
+				opacity: 1
+		.callback-wrap
+			&::before, &::after
+				width: 100%
+	.form-group
+		opacity: 1
+
+.projects-anim
+	.title
+		.caption-inner
+			opacity: 0
+		.caption-sect
+			transform: translateY(50%)
+			transition: opacity 0.5s 0.5s, transform 0.5s 0.5s
+		.caption-sub
+			transform: translateY(50%)
+			transition: opacity 0.5s 0.6s, transform 0.5s 0.6s
+	.item
+		.item-image
+			transform: translateY(50%)
+			&::after
+				transform-origin: 0 100%
+		.item-desc
+			opacity: 0
+		&:nth-child(1)
+			.item-image
+				transition: transform 1s 0.25s
+				&::after
+					transition: transform 1s 0.5s
+			.item-desc
+				transition: opacity 0.5s 0.75s
+		&:nth-child(2)
+			.item-image
+				transition: transform 1s 0.5s
+				&::after
+					transition: transform 1s 0.75s
+			.item-desc
+				transition: opacity 0.5s 1s
+		&:nth-child(3)
+			.item-image
+				transition: transform 1s 0.75s
+				&::after
+					transition: transform 1s 1s
+			.item-desc
+				transition: opacity 0.5s 1.25s
+	.btn
+		opacity: 0
+		transition: opacity 0.5s 2s
+.projects-anim.animate
+	.title
+		.caption-inner
+			opacity: 1
+		.caption-sect
+			transform: translateY(0)
+		.caption-sub
+			transform: translateY(0)
+	.item
+		.item-image
+			transform: translateY(0)
+			&::after
+				transform: scaleY(0)
+		.item-desc
+			opacity: 1
+	.btn
+		opacity: 1
+
+.title-anim
+	.title
+		opacity: 0
+		transition: opacity 0.5s
+.title-anim.animate
+	.title
+		opacity: 1
+
+.opporunities-anim
+	.item
+		opacity: 0
+		&:nth-child(1)
+			transition: opacity 0.5s 0s
+		&:nth-child(2)
+			transition: opacity 0.5s 0.25s
+		&:nth-child(3)
+			transition: opacity 0.5s 0.5s
+.opporunities-anim.animate
+	.item
+		opacity: 1
+
+.work-us-anim
+	.tabs-link
+		opacity: 0
+	.tabs-container
+		opacity: 0
+		transform: translateY(50%)
+		transition: opacity 0.5s 0.5s, transform 0.5s 0.5s
+.work-us-anim.animate
+	.tabs-link
+		opacity: 1
+	.tabs-container
+		opacity: 1
+		transform: translateY(0)
+
+.about-anim
+	overflow: hidden
+	.about-block-image
+		background-color: $d
+		transform: translateX(100%)
+		transition: transform 0.5s
+		position: relative
+		&::after
+			content: ''
+			position: absolute
+			top: 0
+			left: 0
+			width: 101%
+			height: 101%
+			background-color: $d
+			z-index: 100
+			transform-origin: 0 100%
+			transition: transform 0.5s 0.5s
+	.item-desc
+		.caption
+			opacity: 0
+			transition: 0.5s
+		p
+			opacity: 0
+			&:nth-child(1)
+				transition: 0.5s 0.15s
+			&:nth-child(2)
+				transition: 0.5s 0.3s
+			&:nth-child(3)
+				transition: 0.5s 0.45s
+		.btn
+			transition: 0.5s 0.6s
+			opacity: 0
+.about-anim.animate
+	.about-block-image
+		transform: translateX(0)
+		&::after
+			transform: scaleX(0)
+	.item-desc
+		.caption
+			opacity: 1
+		p
+			opacity: 1
+		.btn
+			opacity: 1
+
+.callback-main-anim
+	.delimetr
+		height: 0
+		transition: height 0.5s
+	.main-callback-item
+		&:nth-child(1)
+			.title
+				opacity: 0
+				transition: opacity 0.5s 0.15s
+				.caption
+					opacity: 1
+			.caption
+				opacity: 0
+				transition: opacity 0.5s 0.3s
+			p
+				opacity: 0
+				&:nth-child(1)
+					transition: opacity 0.5s 0.45s
+				&:nth-child(2)
+					transition: opacity 0.5s 0.6s
+				&:nth-child(3)
+					transition: opacity 0.5s 0.75s
+		.founder
+			opacity: 0
+			transition: opacity 0.5s 0.8s
+		&:nth-child(3)
+			.caption
+				opacity: 0
+				transition: opacity 0.5s 0.6s
+			.caption-item
+				&::after
+					width: 0
+					transition: width 0.5s 0.75s
+			.form-group
+				&:nth-child(1)
+					opacity: 0
+					transition: opacity 0.5s 0.8s
+				&:nth-child(2)
+					opacity: 0
+					transition: opacity 0.5s 0.95s
+			.callback-form
+				&::after
+					width: 0
+					transition: width 0.5s 1s
+			.social-icon
+				opacity: 0
+				&:nth-child(1)
+					transition: 0.5s 1.25s
+				&:nth-child(2)
+					transition: 0.5s 1.5s
+				&:nth-child(3)
+					transition: 0.5s 1.75s
+.callback-main-anim.animate
+	.delimetr
+		height: 100%
+	.main-callback-item
+		&:nth-child(1)
+			.title
+				opacity: 1
+			.caption
+				opacity: 1
+			p
+				opacity: 1
+		.founder
+			opacity: 1
+		&:nth-child(3)
+			.caption
+				opacity: 1
+			.caption-item
+				&::after
+					width: 150%
+			.form-group
+				&:nth-child(1)
+					opacity: 1
+				&:nth-child(2)
+					opacity: 1
+			.callback-form
+				&::after
+					width: 200%
+			.social-icon
+				opacity: 1
+
+.projects-page
+	.item-image
+		&::after
+			display: none
+
+.about-page
+	.about-anim
+		.title
+			opacity: 1
+		.about-block-image
+			&::after
+				display: none
+		.item-desc
+			.caption
+				opacity: 1
+			p
+				opacity: 1
+			.btn
+				opacity: 1
+		.about-block-image
+			transform: none
+
+.company-info-anim
+	.item
+		opacity: 0
+		&:nth-child(1)
+			transition: opacity 0.5s
+		&:nth-child(2)
+			transition: opacity 0.5s 0.15s
+		&:nth-child(3)
+			transition: opacity 0.5s 0.3s
+		&:nth-child(4)
+			transition: opacity 0.5s 0.45s
+		&:nth-child(5)
+			transition: opacity 0.5s 0.6s
+		&:nth-child(6)
+			transition: opacity 0.5s 0.75s
+.company-info-anim.animate
+	.item
+		opacity: 1
+
+.review-anim
+	.review
+		&-wrap
+			border: 1px solid transparent
+		&-avatar
+			opacity: 0
+		&-caption
+			opacity: 0
+		.project-name
+			opacity: 0
+		p
+			opacity: 0
+		&-video
+			opacity: 0
+			&-link
+				opacity: 0
+				&::after
+					width: 0
+		.btn
+			opacity: 0!important
+		&:nth-child(1) // 0
+			.review-wrap
+				transition: border-color 0.5s 0.25s
+			.review-avatar
+				transition: opacity 0.5s
+			.review-caption
+				transition: opacity 0.5s 0.5s
+			.project-name
+				transition: opacity 0.5s 0.75s
+			p
+				&:nth-child(1)
+					transition: opacity 0.5s 1s
+				&:nth-child(2)
+					transition: opacity 0.5s 1.25s
+			.review-video
+				transition: 0.5s 1.5s
+			.review-video-link
+				transition: 0.5s 1.75s
+				&::after
+					transition: 0.5s 2.5s
+			.btn
+				transition: 0.5s 2.75s
+		&:nth-child(2) // 0.25
+			.review-wrap
+				transition: border-color 0.5s 0.5s
+			.review-avatar
+				transition: opacity 0.5s 0.25s
+			.review-caption
+				transition: opacity 0.5s 0.75s
+			.project-name
+				transition: opacity 0.5s 1.25s
+			p
+				&:nth-child(1)
+					transition: opacity 0.5s 1.5s
+				&:nth-child(2)
+					transition: opacity 0.5s 1.75s
+			.review-video
+				transition: 0.5s 2s
+			.review-video-link
+				transition: 0.5s 2.25s
+				&::after
+					transition: 0.5s 3.25s
+			.btn
+				transition: 0.5s 3s
+		&:nth-child(3) // 0.5
+			.review-wrap
+				transition: border-color 0.5s 0.75s
+			.review-avatar
+				transition: opacity 0.5s 0.5s
+			.review-caption
+				transition: opacity 0.5s 1s
+			.project-name
+				transition: opacity 0.5s 1.5s
+			p
+				&:nth-child(1)
+					transition: opacity 0.5s 1.75s
+				&:nth-child(2)
+					transition: opacity 0.5s 2s
+			.review-video
+				transition: 0.5s 2.25s
+			.btn
+				transition: 0.5s 3.25s
+			.review-video-link
+					transition: 0.5s 2.5s
+					&::after
+						transition: 0.5s 3.5s
+.review-anim.animate
+	.review
+		&-wrap
+			border: 1px solid $l
+		&-avatar
+			opacity: 1
+		&-caption
+			opacity: 1
+		.project-name
+			opacity: 1
+		p
+			opacity: 1
+		&-video
+			opacity: 1
+			&-link
+				opacity: 1
+				&::after
+					width: 100%
+		.btn
+			opacity: 1!important
+
+.callback-second-anim
+	.caption
+		opacity: 0
+		transition: opacity 0.5s
+	.form-wrap
+		&::before
+			width: 0
+			transition: width 0.5s 0.5s
+		.form-group
+			opacity: 0
+			&:nth-child(1)
+				transition: opacity 0.5s 0.25s
+			&:nth-child(2)
+				transition: opacity 0.5s 0.5s
+		&::after
+			width: 0
+			transition: width 0.5s 0.5s
+	.social
+		&-icon
+			opacity: 0
+			&:nth-child(1)
+				transition: opacity 0.5s 0.75s
+			&:nth-child(2)
+				transition: opacity 0.5s 0.9s
+			&:nth-child(3)
+				transition: opacity 0.5s 1.15s
+
+.callback-second-anim.animate
+	.caption
+		opacity: 1
+	.form-wrap
+		&::before
+			width: 60%
+		.form-group
+			opacity: 1
+		&::after
+			width: 30%
+	.social
+		&-icon
+			opacity: 1
+
+.main-sect-anim
+	.toolbar
+		menu
+			li
+				opacity: 0
+				&:nth-child(1)
+					transition: opacity 0.5s
+				&:nth-child(2)
+					transition: opacity 0.5s 0.25s
+				&:nth-child(3)
+					transition: opacity 0.5s 0.5s
+		.toolbar-contacts
+			opacity: 0
+			transition: opacity 0.5s 0.75s
+	.caption
+		opacity: 0
+		&:nth-child(1)
+			transition: opacity 1s 1s
+		&:nth-child(3)
+			transition: opacity 1s 1.5s
+	.btn
+		opacity: 0
+		transition: opacity 1s 2s
+	.main-sect-line
+		.switch-lang
+			opacity: 0
+			transition: opacity 0.5s 1.25s, border-color 0.5s
+		.line
+			.inner-line
+				height: 0
+				transition: height 0.5s 1.5s
+		.scroll-item
+			span
+				opacity: 0
+				transition: opacity 0.5s 1.75s
+			.icon
+				opacity: 0
+				transition: opacity 0.5s 2s
+	.main-sect-bottom-bar
+		.icon
+			opacity: 0
+			&:nth-child(1)
+				transition: opacity 0.5s 2.25s
+			&:nth-child(2)
+				transition: opacity 0.5s 2.5s
+			&:nth-child(3)
+				transition: opacity 0.5s 2.75s
+
+.main-sect-anim.animate
+	.toolbar
+		menu
+			li
+				opacity: 1
+		.toolbar-contacts
+			opacity: 1
+	.caption
+		opacity: 1
+	.btn
+		opacity: 1
+	.main-sect-line
+		.switch-lang
+			opacity: 1
+		.line
+			.inner-line
+				height: 100%
+		.scroll-item
+			span
+				opacity: 1
+			.icon
+				opacity: 1
+	.main-sect-bottom-bar
+		.icon
+			opacity: 1
+@media only screen and (max-width : 992px)
+	//
