@@ -1,7 +1,7 @@
-# dependencies
+# Dependencies
 node_modules
 
-# logs
+# Logs
 npm-debug.log
 
 # Nuxt build
@@ -9,3 +9,9 @@ npm-debug.log
 
 # Nuxt generate
 dist
+
+# DotEnv file
+.env
+
+# System files
+.DS_Store
