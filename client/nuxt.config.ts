@@ -57,7 +57,6 @@ export default {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/dotenv',
-    '~/modules/typescript.js',
     [
       '@nuxtjs/robots',
       {
