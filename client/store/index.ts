@@ -1,26 +1,20 @@
-import { RootState, Person } from "~/types";
-import { MutationTree, ActionTree } from "vuex";
-import localRandomData from "~/static/random-data.json";
+import Vue from 'vue';
+import Vuex from 'vuex';
+import { pages } from './pages';
+import { posts } from './posts';
+import { shared } from './shared';
+import { seo } from './seo';
+import { postPage } from './postPage';
 
-export const state = (): RootState => ({
-  people: []
-})
+Vue.use(Vuex);
 
-export const mutations: MutationTree<RootState> = {
-  setPeople(state: RootState, people: Person[]): void {
-    state.people = people
-  }
-}
-
-export const actions: ActionTree<RootState, RootState> = {
-  async nuxtServerInit({ commit }, context) {
-    let people: Person[] = []
-
-    // If you serve the site statically with `nuxt generate`, you can't use HTTP requests for local
-    people = context.isStatic ?
-      localRandomData :
-      await context.app.$axios.$get("./random-data.json")
-
-    commit("setPeople", people.slice(0, 10))
-  }
-}
+export default () =>
+  new Vuex.Store({
+    modules: {
+      pages,
+      posts,
+      shared,
+      seo,
+      postPage
+    }
+  });
