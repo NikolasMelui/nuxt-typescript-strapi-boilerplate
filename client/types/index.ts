@@ -51,9 +51,7 @@ export interface Page {
 
 export interface PagesState {
   mainPage: Page;
-  aboutPage: Page;
   postsPage: Page;
-  projectsPage: Page;
 }
 
 export interface Post {
