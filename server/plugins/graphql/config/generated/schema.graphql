@@ -1,9 +1,25 @@
+input createInfoInput {
+  data: InfoInput
+}
+
+type createInfoPayload {
+  info: Info
+}
+
 input createPageInput {
   data: PageInput
 }
 
 type createPagePayload {
   page: Page
+}
+
+input createPostInput {
+  data: PostInput
+}
+
+type createPostPayload {
+  post: Post
 }
 
 input createRoleInput {
@@ -27,12 +43,28 @@ The `DateTime` scalar represents a date and time following the ISO 8601 standard
 """
 scalar DateTime
 
+input deleteInfoInput {
+  where: InputID
+}
+
+type deleteInfoPayload {
+  info: Info
+}
+
 input deletePageInput {
   where: InputID
 }
 
 type deletePagePayload {
   page: Page
+}
+
+input deletePostInput {
+  where: InputID
+}
+
+type deletePostPayload {
+  post: Post
 }
 
 input deleteRoleInput {
@@ -64,6 +96,17 @@ input editFileInput {
   related: [ID]
 }
 
+input editInfoInput {
+  address_ru: String
+  address_en: String
+  addresslink: String
+  phone: String
+  email: String
+  vkontakte: String
+  facebook: String
+  instagram: String
+}
+
 input editPageInput {
   title_ru: String
   title_en: String
@@ -73,6 +116,19 @@ input editPageInput {
   seokeywords: String
   content_ru: String
   content_en: String
+}
+
+input editPostInput {
+  title_ru: String
+  title_en: String
+  slug: String
+  seotitle: String
+  seodescription: String
+  seokeywords: String
+  content_ru: String
+  content_en: String
+  image: ID
+  previewImage: ID
 }
 
 input editRoleInput {
@@ -107,6 +163,31 @@ input FileInput {
   related: [ID]
 }
 
+type Info {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  address_ru: String
+  address_en: String
+  addresslink: String
+  phone: String
+  email: String
+  vkontakte: String
+  facebook: String
+  instagram: String
+}
+
+input InfoInput {
+  address_ru: String
+  address_en: String
+  addresslink: String
+  phone: String
+  email: String
+  vkontakte: String
+  facebook: String
+  instagram: String
+}
+
 input InputID {
   id: ID!
 }
@@ -116,12 +197,18 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 """
 scalar JSON
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Page | createPagePayload | updatePagePayload | deletePagePayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Info | createInfoPayload | updateInfoPayload | deleteInfoPayload | Page | createPagePayload | updatePagePayload | deletePagePayload | Post | createPostPayload | updatePostPayload | deletePostPayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
 
 type Mutation {
+  createInfo(input: createInfoInput): createInfoPayload
+  updateInfo(input: updateInfoInput): updateInfoPayload
+  deleteInfo(input: deleteInfoInput): deleteInfoPayload
   createPage(input: createPageInput): createPagePayload
   updatePage(input: updatePageInput): updatePagePayload
   deletePage(input: deletePageInput): deletePagePayload
+  createPost(input: createPostInput): createPostPayload
+  updatePost(input: updatePostInput): updatePostPayload
+  deletePost(input: deletePostInput): deletePostPayload
 
   """Create a new role"""
   createRole(input: createRoleInput): createRolePayload
@@ -169,9 +256,42 @@ input PageInput {
   content_en: String
 }
 
+type Post {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  title_ru: String
+  title_en: String
+  slug: String
+  seotitle: String
+  seodescription: String
+  seokeywords: String
+  content_ru: String
+  content_en: String
+  image: UploadFile
+  previewImage: UploadFile
+}
+
+input PostInput {
+  title_ru: String
+  title_en: String
+  slug: String
+  seotitle: String
+  seodescription: String
+  seokeywords: String
+  content_ru: String
+  content_en: String
+  image: ID
+  previewImage: ID
+}
+
 type Query {
+  info(id: ID!): Info
+  infos(sort: String, limit: Int, start: Int, where: JSON): [Info]
   page(id: ID!): Page
   pages(sort: String, limit: Int, start: Int, where: JSON): [Page]
+  post(id: ID!): Post
+  posts(sort: String, limit: Int, start: Int, where: JSON): [Post]
   files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   role(id: ID!): UsersPermissionsRole
 
@@ -192,6 +312,15 @@ input RoleInput {
   users: [ID]
 }
 
+input updateInfoInput {
+  where: InputID
+  data: editInfoInput
+}
+
+type updateInfoPayload {
+  info: Info
+}
+
 input updatePageInput {
   where: InputID
   data: editPageInput
@@ -199,6 +328,15 @@ input updatePageInput {
 
 type updatePagePayload {
   page: Page
+}
+
+input updatePostInput {
+  where: InputID
+  data: editPostInput
+}
+
+type updatePostPayload {
+  post: Post
 }
 
 input updateRoleInput {

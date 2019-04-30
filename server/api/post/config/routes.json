@@ -2,48 +2,48 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/pages",
-      "handler": "Page.find",
+      "path": "/posts",
+      "handler": "Post.find",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/pages/count",
-      "handler": "Page.count",
+      "path": "/posts/count",
+      "handler": "Post.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/pages/:id",
-      "handler": "Page.findOne",
+      "path": "/posts/:id",
+      "handler": "Post.findOne",
       "config": {
         "policies": []
       }
     },
     {
       "method": "POST",
-      "path": "/pages",
-      "handler": "Page.create",
+      "path": "/posts",
+      "handler": "Post.create",
       "config": {
         "policies": []
       }
     },
     {
       "method": "PUT",
-      "path": "/pages/:id",
-      "handler": "Page.update",
+      "path": "/posts/:id",
+      "handler": "Post.update",
       "config": {
         "policies": []
       }
     },
     {
       "method": "DELETE",
-      "path": "/pages/:id",
-      "handler": "Page.destroy",
+      "path": "/posts/:id",
+      "handler": "Post.destroy",
       "config": {
         "policies": []
       }

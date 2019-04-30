@@ -1,0 +1,59 @@
+{
+  "connection": "default",
+  "collectionName": "posts",
+  "info": {
+    "name": "post",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "title_ru": {
+      "default": "",
+      "type": "string"
+    },
+    "title_en": {
+      "default": "",
+      "type": "string"
+    },
+    "slug": {
+      "default": "",
+      "type": "string"
+    },
+    "seotitle": {
+      "default": "",
+      "type": "string"
+    },
+    "seodescription": {
+      "default": "",
+      "type": "string"
+    },
+    "seokeywords": {
+      "default": "",
+      "type": "string"
+    },
+    "content_ru": {
+      "default": "",
+      "type": "text"
+    },
+    "content_en": {
+      "default": "",
+      "type": "text"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "previewImage": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}
