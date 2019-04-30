@@ -30,6 +30,7 @@
     "@nuxtjs/dotenv": "^1.3.0",
     "@nuxtjs/robots": "^2.1.0",
     "@nuxtjs/sitemap": "^1.0.0",
+    "@types/dotenv": "^6.1.1",
     "node-sass": "^4.11.0",
     "nuxt": "2.6.1",
     "nuxt-property-decorator": "2.1.3",
@@ -41,7 +42,9 @@
   },
   "devDependencies": {
     "@nuxt/typescript": "2.6.1",
-    "@types/node": "10.14.4",
-    "@types/webpack-env": "1.13.9"
+    "@types/node": "11.13.8",
+    "@types/webpack-env": "1.13.9",
+    "pug": "^2.0.3",
+    "pug-plain-loader": "^1.0.0"
   }
 }
