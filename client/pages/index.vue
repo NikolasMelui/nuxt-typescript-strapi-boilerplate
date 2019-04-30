@@ -1,42 +1,67 @@
-<template>
-  <section>
-    <h1 class="header">Nuxt TypeScript Starter</h1>
-    <div class="cards">
-      <Card
-        v-for="person in people"
-        :key="person.id"
-        :person="person"
-      ></Card>
-    </div>
-  </section>
+<template lang="pug">
+  section
+    h1 Hello
+    div
+      ItemPost(v-for="post in posts" :key="post.id" :post="post")
 </template>
 
 <script lang="ts">
+import { Component, Prop, Vue } from "nuxt-property-decorator";
+import { State, Action, Getter, Mutation, namespace } from "vuex-class";
 import {
-  Component,
-  Vue
-} from "nuxt-property-decorator"
-import { State } from "vuex-class"
-import { Person } from "~/types";
-import Card from "~/components/Card.vue"
+  RootState,
+  PagesState,
+  Page,
+  PostsState,
+  Post,
+  SeoState
+} from "~/types";
+
+import ItemPost from "~/components/ItemPost.vue";
+
+import strapiRequestService from "~/services/strapiRequestService";
+
+const pagesModule = namespace("pages");
+const postsModule = namespace("posts");
 
 @Component({
   components: {
-    Card
+    ItemPost
   }
 })
 export default class extends Vue {
-  @State people: Person
+  @pagesModule.Getter("getMainPage") mainPage: Page;
+  @pagesModule.Getter("getMainPageSeotitle") seoTitle: string;
+  @pagesModule.Getter("getMainPageSeoDescription") seoDescription: string;
+  @pagesModule.Getter("getMainPageSeoKeywords") seoKeywords: string;
+
+  public async asyncData({ store, params, req }) {
+    await store.dispatch("pages/fetchPage", "Main");
+    await store.dispatch("posts/fetchPosts");
+    const posts: Array<Post> = store.getters["posts/getPosts"];
+
+    return {
+      posts
+    };
+  }
+
+  head() {
+    return {
+      title: this.seoTitle,
+      htmlAttrs: {
+        lang: "ru"
+      },
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: this.seoDescription
+        }
+      ]
+    };
+  }
 }
 </script>
 
-<style scoped>
-.header {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-}
+<style lang="sass">
 </style>
