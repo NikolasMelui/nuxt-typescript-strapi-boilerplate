@@ -14,7 +14,6 @@ export interface SharedState {
   isMenuOpen: boolean;
   isCallbackOpen: boolean;
   isToolbarActive: boolean;
-  isAnimateMainScreen: boolean;
   modalSettings: Object;
   notification: Object;
 }
