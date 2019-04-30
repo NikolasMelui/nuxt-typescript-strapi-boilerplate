@@ -1,0 +1,47 @@
+{
+  "connection": "default",
+  "collectionName": "infos",
+  "info": {
+    "name": "info",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "address_ru": {
+      "default": "",
+      "type": "string"
+    },
+    "address_en": {
+      "default": "",
+      "type": "string"
+    },
+    "addresslink": {
+      "default": "",
+      "type": "string"
+    },
+    "phone": {
+      "default": "",
+      "type": "string"
+    },
+    "email": {
+      "default": "",
+      "type": "email"
+    },
+    "vkontakte": {
+      "default": "",
+      "type": "string"
+    },
+    "facebook": {
+      "default": "",
+      "type": "string"
+    },
+    "instagram": {
+      "default": "",
+      "type": "string"
+    }
+  }
+}

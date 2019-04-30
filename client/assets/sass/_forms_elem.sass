@@ -1,0 +1,59 @@
+// border-color, color, bg-color, hover-color, bg-hover-color, bg-active-color, border-radius, font-size, padding, line-heght, font-weight
+input
+	text-align: left
+	border: none
+	padding: 13px 0
+	color: $l
+	background-color: transparent
+	font-size: 18px
+textarea
+	height: 140px
+	width: 100%
+	text-align: left
+	border: none
+label
+	font-weight: 400
+	white-space: nowrap
+
+.input
+	border: 1px solid $l
+	border-radius: $radius
+	padding: 0 15px
+	display: flex
+	align-items: center
+	&-label
+		font-size: 18px
+	&-item
+		padding-left: 10px
+
+.textarea
+	width: 100%
+	height: 140px
+.form-group
+	padding: 0 0 20px 0
+	width: 100%
+
+@media only screen and (max-width : 1560px)
+	//
+@media only screen and (max-width : 1300px)
+	.input-label, .input-item
+		font-size: 16px
+	
+@media only screen and (max-width : 992px)
+	//
+@media only screen and (max-width : 768px)
+	.form-group
+		flex-direction: column
+		margin: 0
+		padding: 0
+	.input
+		margin-bottom: 20px
+		width: 100%
+	input
+		padding: 10px 0
+@media only screen and (max-width : 560px)
+	//
+@media only screen and (max-width : 480px)
+	//
+@media only screen and (max-width : 320px)
+	//

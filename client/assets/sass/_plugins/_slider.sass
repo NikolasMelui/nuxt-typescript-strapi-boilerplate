@@ -1,0 +1,65 @@
+.slider
+	position: relative
+	z-index: 999
+	.slide-line
+		transition: transform 0.5s ease-in-out
+		position: relative
+	.slide
+		float: left
+	.slide-item
+		width: 100%
+	.nav
+		transition: 0s
+		display: none
+		cursor: none
+		z-index: 9999
+		pointer-events: none
+		margin: auto
+		position: absolute
+	.nav-active
+		display: block
+	.navigation-col
+		position: absolute
+		top: 
+		bottom: 0
+		height: 100%
+		margin: auto
+		z-index: 800
+		display: block
+		cursor: none
+		width: 120px
+		&:hover
+			opacity: 0.2
+			.nav
+				opacity: 1
+	.nav-col-left
+		left: 0
+		opacity: 0
+		background-image: linear-gradient(to left, transparent, #94abc0)
+		transition: opacity 1s
+	.nav-col-right
+		right: 0
+		opacity: 0
+		background-image: linear-gradient(to right, transparent, #94abc0)
+		transition: opacity 1s
+.offset-right
+	.nav-col-right
+		opacity: 0.3
+.offset-left
+	.nav-col-left
+		opacity: 0.3
+
+@media only screen and (max-width : 1200px)
+	.slider
+		.navigation-col
+			width: 80px
+		.nav
+			display: block
+			top: 0!important
+			bottom: 0!important
+		.nav.next
+			right: 30px!important
+			left: auto!important
+		.nav.prev
+			left: 30px!important
+			right: auto!important

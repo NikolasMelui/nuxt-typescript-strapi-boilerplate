@@ -1,0 +1,150 @@
+@mixin center-mode
+	top: 0
+	bottom: 0
+	left: 0
+	right: 0
+	margin: auto
+
+@mixin triangle-top ($size, $color)
+	height: 0
+	width: 0
+	border: $size solid transparent
+	border-bottom: $size solid $color
+	transform-origin: 50% 30%
+	cursor: pointer
+
+@mixin triangle-left ($size, $color)
+	height: 0
+	width: 0
+	border: $size solid transparent
+	border-right: $size solid $color
+	transform-origin: 70% 50%
+	cursor: pointer
+
+@mixin triangle-bottom ($size, $color)
+	height: 0
+	width: 0
+	border: $size solid transparent
+	border-top: $size solid $color
+	transform-origin: 50% 70%
+	cursor: pointer
+
+@mixin triangle-right ($size, $color)
+	height: 0
+	width: 0
+	border: $size solid transparent
+	border-left: $size solid $color
+	transform-origin: 30% 50%
+	cursor: pointer
+
+@mixin close-icon ($size, $color, $t)
+	width: $size
+	height: $size
+	position: relative
+	transition: 0.5s
+	cursor: pointer
+	&::after, &::before
+		content: ''
+		position: absolute
+		width: $size
+		height: $t
+		background-color: $color
+		@include center-mode
+	&::after
+		transform: rotate(45deg)
+	&::before
+		transform: rotate(-45deg)
+
+@mixin angle-top ($size, $color, $t)
+	height: $size
+	width: $size
+	cursor: pointer
+	position: relative
+	&::after
+		content: ''
+		position: absolute
+		@include center-mode
+		height: $size
+		width: $size
+		border:
+			top: $t solid $color
+			left: $t solid $color
+		transform: rotate(45deg)
+
+@mixin angle-left ($size, $color, $t)
+	height: $size
+	width: $size
+	cursor: pointer
+	position: relative
+	&::after
+		content: ''
+		position: absolute
+		@include center-mode
+		height: $size
+		width: $size
+		border:
+			bottom: $t solid $color
+			left: $t solid $color
+		transform: rotate(45deg)
+
+@mixin angle-bottom ($size, $color, $t)
+	height: $size
+	width: $size
+	cursor: pointer
+	position: relative
+	&::after
+		content: ''
+		position: absolute
+		@include center-mode
+		height: $size
+		width: $size
+		border:
+			bottom: $t solid $color
+			right: $t solid $color
+		transform: rotate(45deg)
+
+@mixin angle-right ($size, $color, $t)
+	height: $size
+	width: $size
+	cursor: pointer
+	position: relative
+	&::after
+		content: ''
+		position: absolute
+		@include center-mode
+		height: $size
+		width: $size
+		border:
+			top: $t solid $color
+			right: $t solid $color
+		transform: rotate(45deg)
+
+//Icons example
+.triangle-top
+	@include triangle-top (20px, $l)
+.triangle-bottom
+	@include triangle-bottom (8px, $l)
+.triangle-left
+	@include triangle-left (20px, $l)
+.triangle-right
+	@include triangle-right (7px, $l)
+
+.angle-top
+	@include angle-top (30px, $l, 2px)
+.angle-bottom
+	@include angle-bottom (30px, $l, 2px)
+.angle-left
+	@include angle-left (30px, $l, 2px)
+.angle-right
+	@include angle-right (30px, $l, 2px)
+
+.close
+	@include close-icon (40px, $l, 1px)
+.dark-close
+	@include close-icon (40px, $d, 1px)
+
+@media only screen and (max-width : 1560px)
+	.angle-left
+		@include angle-left (20px, $l, 2px)
+	.angle-right
+		@include angle-right (20px, $l, 2px)
