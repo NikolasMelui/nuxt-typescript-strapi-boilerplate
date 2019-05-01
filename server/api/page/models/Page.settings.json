@@ -1,52 +1,73 @@
 {
   "connection": "default",
-  "collectionName": "pages",
+  "collectionName": "page",
   "info": {
     "name": "page",
-    "description": "Страницы проекта"
+    "description": "Страница"
   },
   "options": {
-    "increments": true,
-    "timestamps": true,
-    "comment": ""
+    "timestamps": true
   },
   "attributes": {
+    "seotitle": {
+      "default": "",
+      "type": "string",
+      "required": true,
+      "minLength": 3
+    },
+    "seodescription": {
+      "default": "",
+      "type": "string",
+      "required": true,
+      "minLength": 3
+    },
+    "seokeywords": {
+      "default": "",
+      "type": "string",
+      "required": true,
+      "minLength": 3
+    },
+    "content_ru": {
+      "default": "",
+      "type": "text",
+      "required": true,
+      "minLength": 3
+    },
+    "content_en": {
+      "default": "",
+      "type": "text",
+      "required": true,
+      "minLength": 3
+    },
     "title_ru": {
       "default": "",
       "type": "string",
-      "required": true
+      "required": true,
+      "minLength": 3
     },
     "title_en": {
       "default": "",
       "type": "string",
-      "required": true
+      "required": true,
+      "minLength": 3
+    },
+    "subtitle_ru": {
+      "default": "",
+      "type": "string",
+      "required": true,
+      "minLength": 3
+    },
+    "subtitle_en": {
+      "default": "",
+      "type": "string",
+      "required": true,
+      "minLength": 3
     },
     "slug": {
       "default": "",
-      "unique": true,
-      "minLength": 2,
       "type": "string",
-      "required": true
-    },
-    "seotitle": {
-      "default": "",
-      "type": "string"
-    },
-    "seodescription": {
-      "default": "",
-      "type": "string"
-    },
-    "seokeywords": {
-      "default": "",
-      "type": "string"
-    },
-    "content_ru": {
-      "default": "",
-      "type": "text"
-    },
-    "content_en": {
-      "default": "",
-      "type": "text"
+      "required": true,
+      "minLength": 3
     }
   }
 }
