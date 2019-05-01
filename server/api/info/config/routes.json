@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/infos/:id",
+      "path": "/infos/:_id",
       "handler": "Info.findOne",
       "config": {
         "policies": []
@@ -34,7 +34,7 @@
     },
     {
       "method": "PUT",
-      "path": "/infos/:id",
+      "path": "/infos/:_id",
       "handler": "Info.update",
       "config": {
         "policies": []
@@ -42,7 +42,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/infos/:id",
+      "path": "/infos/:_id",
       "handler": "Info.destroy",
       "config": {
         "policies": []

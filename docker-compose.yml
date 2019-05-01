@@ -4,12 +4,10 @@ services:
   db:
     image: mongo
     ports:
-      - 27017:27020
+      - 27020:27017
     volumes:
       - ./db:/data/db
     environment:
       MONGO_LOG_DIR: /dev/null
-      MONGO_INITDB_DATABASE: api_db
-      MONGO_INITDB_USERNAME: api_username
-      MONGO_INITDB_PASSWORD: api_password
+      MONGO_INITDB_DATABASE: strapi
 

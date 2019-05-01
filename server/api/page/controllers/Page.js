@@ -7,14 +7,13 @@
  */
 
 module.exports = {
-
   /**
    * Retrieve page records.
    *
    * @return {Object|Array}
    */
 
-  find: async (ctx) => {
+  find: async ctx => {
     if (ctx.query._q) {
       return strapi.services.page.search(ctx.query);
     } else {
@@ -28,7 +27,11 @@ module.exports = {
    * @return {Object}
    */
 
-  findOne: async (ctx) => {
+  findOne: async ctx => {
+    if (!ctx.params._id.match(/^[0-9a-fA-F]{24}$/)) {
+      return ctx.notFound();
+    }
+
     return strapi.services.page.fetch(ctx.params);
   },
 
@@ -38,7 +41,7 @@ module.exports = {
    * @return {Number}
    */
 
-  count: async (ctx) => {
+  count: async ctx => {
     return strapi.services.page.count(ctx.query);
   },
 
@@ -48,7 +51,7 @@ module.exports = {
    * @return {Object}
    */
 
-  create: async (ctx) => {
+  create: async ctx => {
     return strapi.services.page.add(ctx.request.body);
   },
 
@@ -59,7 +62,7 @@ module.exports = {
    */
 
   update: async (ctx, next) => {
-    return strapi.services.page.edit(ctx.params, ctx.request.body) ;
+    return strapi.services.page.edit(ctx.params, ctx.request.body);
   },
 
   /**

@@ -1,6 +1,5 @@
 import axios from 'axios';
 import dotenv from 'dotenv';
-import NuxtConfiguration from '@nuxt/config';
 dotenv.config();
 
 const base_host = process.env.BASE_HOST || '127.0.0.1';

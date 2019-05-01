@@ -305,7 +305,7 @@
         "parameters": []
       }
     },
-    "/infos/{id}": {
+    "/infos/{_id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -357,7 +357,7 @@
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "_id",
             "in": "path",
             "description": "",
             "deprecated": false,
@@ -430,7 +430,7 @@
         },
         "parameters": [
           {
-            "name": "id",
+            "name": "_id",
             "in": "path",
             "description": "",
             "deprecated": false,
@@ -493,7 +493,7 @@
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "_id",
             "in": "path",
             "description": "",
             "deprecated": false,
@@ -510,7 +510,15 @@
     "schemas": {
       "Info": {
         "required": [
-          "id"
+          "id",
+          "address_ru",
+          "address_en",
+          "email",
+          "vkontakte",
+          "facebook",
+          "instagram",
+          "addresslink",
+          "phone"
         ],
         "properties": {
           "id": {
@@ -518,71 +526,97 @@
           },
           "address_ru": {
             "type": "string",
-            "default": ""
+            "default": "",
+            "minLength": 3
           },
           "address_en": {
             "type": "string",
-            "default": ""
-          },
-          "addresslink": {
-            "type": "string",
-            "default": ""
-          },
-          "phone": {
-            "type": "string",
-            "default": ""
+            "default": "",
+            "minLength": 3
           },
           "email": {
             "type": "string",
-            "default": ""
+            "default": "",
+            "minLength": 5
           },
           "vkontakte": {
             "type": "string",
-            "default": ""
+            "default": "",
+            "minLength": 3
           },
           "facebook": {
             "type": "string",
-            "default": ""
+            "default": "",
+            "minLength": 3
           },
           "instagram": {
             "type": "string",
-            "default": ""
+            "default": "",
+            "minLength": 3
+          },
+          "addresslink": {
+            "type": "string",
+            "default": "3",
+            "minLength": 3
+          },
+          "phone": {
+            "type": "string",
+            "default": "",
+            "minLength": 3
           }
         }
       },
       "NewInfo": {
+        "required": [
+          "address_ru",
+          "address_en",
+          "email",
+          "vkontakte",
+          "facebook",
+          "instagram",
+          "addresslink",
+          "phone"
+        ],
         "properties": {
           "address_ru": {
             "type": "string",
-            "default": ""
+            "default": "",
+            "minLength": 3
           },
           "address_en": {
             "type": "string",
-            "default": ""
-          },
-          "addresslink": {
-            "type": "string",
-            "default": ""
-          },
-          "phone": {
-            "type": "string",
-            "default": ""
+            "default": "",
+            "minLength": 3
           },
           "email": {
             "type": "string",
-            "default": ""
+            "default": "",
+            "minLength": 5
           },
           "vkontakte": {
             "type": "string",
-            "default": ""
+            "default": "",
+            "minLength": 3
           },
           "facebook": {
             "type": "string",
-            "default": ""
+            "default": "",
+            "minLength": 3
           },
           "instagram": {
             "type": "string",
-            "default": ""
+            "default": "",
+            "minLength": 3
+          },
+          "addresslink": {
+            "type": "string",
+            "default": "3",
+            "minLength": 3
+          },
+          "phone": {
+            "type": "string",
+            "default": "",
+            "minLength": 3
           }
         }
       }

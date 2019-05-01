@@ -21,8 +21,8 @@ module.exports = {
       const options = {
         from: `${process.env.EMAIL_ADDRESS}` || '',
         to: `${process.env.EMAIL_ADDRESS}` || '',
-        replyTo: `no-reply@${process.env.EMAIL_ADDRESS}`,
-        subject: 'У вас новая заявка с сайта ...',
+        replyTo: 'no-reply@elkyprokect@gmail.com',
+        subject: 'У вас новая заявка с сайта Elky',
         html: ctx.request.body.html || ''
       };
       //Send the email
