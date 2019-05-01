@@ -305,7 +305,7 @@
         "parameters": []
       }
     },
-    "/posts/{id}": {
+    "/posts/{_id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -357,7 +357,7 @@
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "_id",
             "in": "path",
             "description": "",
             "deprecated": false,
@@ -430,7 +430,7 @@
         },
         "parameters": [
           {
-            "name": "id",
+            "name": "_id",
             "in": "path",
             "description": "",
             "deprecated": false,
@@ -493,7 +493,7 @@
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "_id",
             "in": "path",
             "description": "",
             "deprecated": false,
@@ -510,7 +510,17 @@
     "schemas": {
       "Post": {
         "required": [
-          "id"
+          "id",
+          "title_ru",
+          "title_en",
+          "seotitle",
+          "seodescription",
+          "slug",
+          "image",
+          "seokeywords",
+          "content_ru",
+          "content_en",
+          "previewImage"
         ],
         "properties": {
           "id": {
@@ -518,35 +528,28 @@
           },
           "title_ru": {
             "type": "string",
-            "default": ""
+            "default": "",
+            "minLength": 3
           },
           "title_en": {
             "type": "string",
-            "default": ""
-          },
-          "slug": {
-            "type": "string",
-            "default": ""
+            "default": "",
+            "minLength": 3
           },
           "seotitle": {
             "type": "string",
-            "default": ""
+            "default": "",
+            "minLength": 3
           },
           "seodescription": {
             "type": "string",
-            "default": ""
+            "default": "",
+            "minLength": 3
           },
-          "seokeywords": {
+          "slug": {
             "type": "string",
-            "default": ""
-          },
-          "content_ru": {
-            "type": "string",
-            "default": ""
-          },
-          "content_en": {
-            "type": "string",
-            "default": ""
+            "default": "",
+            "minLength": 3
           },
           "image": {
             "required": [
@@ -593,6 +596,21 @@
                 "type": "string"
               }
             }
+          },
+          "seokeywords": {
+            "type": "string",
+            "default": "",
+            "minLength": 3
+          },
+          "content_ru": {
+            "type": "string",
+            "default": "",
+            "minLength": 3
+          },
+          "content_en": {
+            "type": "string",
+            "default": "",
+            "minLength": 3
           },
           "previewImage": {
             "required": [
@@ -643,38 +661,56 @@
         }
       },
       "NewPost": {
+        "required": [
+          "title_ru",
+          "title_en",
+          "seotitle",
+          "seodescription",
+          "slug",
+          "seokeywords",
+          "content_ru",
+          "content_en"
+        ],
         "properties": {
           "title_ru": {
             "type": "string",
-            "default": ""
+            "default": "",
+            "minLength": 3
           },
           "title_en": {
             "type": "string",
-            "default": ""
-          },
-          "slug": {
-            "type": "string",
-            "default": ""
+            "default": "",
+            "minLength": 3
           },
           "seotitle": {
             "type": "string",
-            "default": ""
+            "default": "",
+            "minLength": 3
           },
           "seodescription": {
             "type": "string",
-            "default": ""
+            "default": "",
+            "minLength": 3
+          },
+          "slug": {
+            "type": "string",
+            "default": "",
+            "minLength": 3
           },
           "seokeywords": {
             "type": "string",
-            "default": ""
+            "default": "",
+            "minLength": 3
           },
           "content_ru": {
             "type": "string",
-            "default": ""
+            "default": "",
+            "minLength": 3
           },
           "content_en": {
             "type": "string",
-            "default": ""
+            "default": "",
+            "minLength": 3
           }
         }
       }

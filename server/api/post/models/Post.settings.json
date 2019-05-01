@@ -1,59 +1,74 @@
 {
   "connection": "default",
-  "collectionName": "posts",
+  "collectionName": "post",
   "info": {
     "name": "post",
-    "description": ""
+    "description": "Новость"
   },
   "options": {
-    "increments": true,
-    "timestamps": true,
-    "comment": ""
+    "timestamps": true
   },
   "attributes": {
     "title_ru": {
       "default": "",
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "minLength": 3
     },
     "title_en": {
       "default": "",
-      "type": "string"
-    },
-    "slug": {
-      "default": "",
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "minLength": 3
     },
     "seotitle": {
       "default": "",
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "minLength": 3
     },
     "seodescription": {
       "default": "",
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "minLength": 3
     },
-    "seokeywords": {
+    "slug": {
       "default": "",
-      "type": "string"
-    },
-    "content_ru": {
-      "default": "",
-      "type": "text"
-    },
-    "content_en": {
-      "default": "",
-      "type": "text"
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "minLength": 3
     },
     "image": {
       "model": "file",
       "via": "related",
       "plugin": "upload",
-      "required": false
+      "required": true
+    },
+    "seokeywords": {
+      "default": "",
+      "type": "string",
+      "required": true,
+      "minLength": 3
+    },
+    "content_ru": {
+      "default": "",
+      "type": "text",
+      "required": true,
+      "minLength": 3
+    },
+    "content_en": {
+      "default": "",
+      "type": "text",
+      "required": true,
+      "minLength": 3
     },
     "previewImage": {
       "model": "file",
       "via": "related",
       "plugin": "upload",
-      "required": false
+      "required": true
     }
   }
 }

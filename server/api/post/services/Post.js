@@ -1,4 +1,3 @@
-/* global Post */
 'use strict';
 
 /**
@@ -10,9 +9,6 @@
 // Public dependencies.
 const _ = require('lodash');
 
-// Strapi utilities.
-const utils = require('strapi-hook-bookshelf/lib/utils/');
-
 module.exports = {
 
   /**
@@ -22,33 +18,21 @@ module.exports = {
    */
 
   fetchAll: (params) => {
-    // Convert `params` object to filters compatible with Bookshelf.
+    // Convert `params` object to filters compatible with Mongo.
     const filters = strapi.utils.models.convertParams('post', params);
     // Select field to populate.
     const populate = Post.associations
       .filter(ast => ast.autoPopulate !== false)
-      .map(ast => ast.alias);
+      .map(ast => ast.alias)
+      .join(' ');
 
-    return Post.query(function(qb) {
-      _.forEach(filters.where, (where, key) => {
-        if (_.isArray(where.value) && where.symbol !== 'IN' && where.symbol !== 'NOT IN') {
-          for (const value in where.value) {
-            qb[value ? 'where' : 'orWhere'](key, where.symbol, where.value[value])
-          }
-        } else {
-          qb.where(key, where.symbol, where.value);
-        }
-      });
-
-      if (filters.sort) {
-        qb.orderBy(filters.sort.key, filters.sort.order);
-      }
-
-      qb.offset(filters.start);
-      qb.limit(filters.limit);
-    }).fetchAll({
-      withRelated: filters.populate || populate
-    });
+    return Post
+      .find()
+      .where(filters.where)
+      .sort(filters.sort)
+      .skip(filters.start)
+      .limit(filters.limit)
+      .populate(filters.populate || populate);
   },
 
   /**
@@ -61,34 +45,27 @@ module.exports = {
     // Select field to populate.
     const populate = Post.associations
       .filter(ast => ast.autoPopulate !== false)
-      .map(ast => ast.alias);
+      .map(ast => ast.alias)
+      .join(' ');
 
-    return Post.forge(_.pick(params, 'id')).fetch({
-      withRelated: populate
-    });
+    return Post
+      .findOne(_.pick(params, _.keys(Post.schema.paths)))
+      .populate(populate);
   },
 
   /**
-   * Promise to count a/an post.
+   * Promise to count posts.
    *
    * @return {Promise}
    */
 
   count: (params) => {
-    // Convert `params` object to filters compatible with Bookshelf.
+    // Convert `params` object to filters compatible with Mongo.
     const filters = strapi.utils.models.convertParams('post', params);
 
-    return Post.query(function(qb) {
-      _.forEach(filters.where, (where, key) => {
-        if (_.isArray(where.value)) {
-          for (const value in where.value) {
-            qb[value ? 'where' : 'orWhere'](key, where.symbol, where.value[value]);
-          }
-        } else {
-          qb.where(key, where.symbol, where.value);
-        }
-      });
-    }).count();
+    return Post
+      .countDocuments()
+      .where(filters.where);
   },
 
   /**
@@ -103,10 +80,10 @@ module.exports = {
     const data = _.omit(values, Post.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = await Post.forge(data).save();
+    const entry = await Post.create(data);
 
     // Create relational data and return the entry.
-    return Post.updateRelations({ id: entry.id , values: relations });
+    return Post.updateRelations({ _id: entry.id, values: relations });
   },
 
   /**
@@ -117,13 +94,13 @@ module.exports = {
 
   edit: async (params, values) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Post.associations.map(ast => ast.alias));
-    const data = _.omit(values, Post.associations.map(ast => ast.alias));
+    const relations = _.pick(values, Post.associations.map(a => a.alias));
+    const data = _.omit(values, Post.associations.map(a => a.alias));
 
-    // Create entry with no-relational data.
-    const entry = await Post.forge(params).save(data);
+    // Update entry with no-relational data.
+    const entry = await Post.updateOne(params, data, { multi: true });
 
-    // Create relational data and return the entry.
+    // Update relational data and return the entry.
     return Post.updateRelations(Object.assign(params, { values: relations }));
   },
 
@@ -133,28 +110,42 @@ module.exports = {
    * @return {Promise}
    */
 
-  remove: async (params) => {
-    params.values = {};
-    Post.associations.map(association => {
-      switch (association.nature) {
-        case 'oneWay':
-        case 'oneToOne':
-        case 'manyToOne':
-        case 'oneToManyMorph':
-          params.values[association.alias] = null;
-          break;
-        case 'oneToMany':
-        case 'manyToMany':
-        case 'manyToManyMorph':
-          params.values[association.alias] = [];
-          break;
-        default:
-      }
-    });
+  remove: async params => {
+    // Select field to populate.
+    const populate = Post.associations
+      .filter(ast => ast.autoPopulate !== false)
+      .map(ast => ast.alias)
+      .join(' ');
 
-    await Post.updateRelations(params);
+    // Note: To get the full response of Mongo, use the `remove()` method
+    // or add spent the parameter `{ passRawResult: true }` as second argument.
+    const data = await Post
+      .findOneAndRemove(params, {})
+      .populate(populate);
 
-    return Post.forge(params).destroy();
+    if (!data) {
+      return data;
+    }
+
+    await Promise.all(
+      Post.associations.map(async association => {
+        if (!association.via || !data._id) {
+          return true;
+        }
+
+        const search = _.endsWith(association.nature, 'One') || association.nature === 'oneToMany' ? { [association.via]: data._id } : { [association.via]: { $in: [data._id] } };
+        const update = _.endsWith(association.nature, 'One') || association.nature === 'oneToMany' ? { [association.via]: null } : { $pull: { [association.via]: data._id } };
+
+        // Retrieve model.
+        const model = association.plugin ?
+          strapi.plugins[association.plugin].models[association.model || association.collection] :
+          strapi.models[association.model || association.collection];
+
+        return model.update(search, update, { multi: true });
+      })
+    );
+
+    return data;
   },
 
   /**
@@ -164,80 +155,44 @@ module.exports = {
    */
 
   search: async (params) => {
-    // Convert `params` object to filters compatible with Bookshelf.
+    // Convert `params` object to filters compatible with Mongo.
     const filters = strapi.utils.models.convertParams('post', params);
     // Select field to populate.
     const populate = Post.associations
       .filter(ast => ast.autoPopulate !== false)
-      .map(ast => ast.alias);
+      .map(ast => ast.alias)
+      .join(' ');
 
-    const associations = Post.associations.map(x => x.alias);
-    const searchText = Object.keys(Post._attributes)
-      .filter(attribute => attribute !== Post.primaryKey && !associations.includes(attribute))
-      .filter(attribute => ['string', 'text'].includes(Post._attributes[attribute].type));
+    const $or = Object.keys(Post.attributes).reduce((acc, curr) => {
+      switch (Post.attributes[curr].type) {
+        case 'integer':
+        case 'float':
+        case 'decimal':
+          if (!_.isNaN(_.toNumber(params._q))) {
+            return acc.concat({ [curr]: params._q });
+          }
 
-    const searchNoText = Object.keys(Post._attributes)
-      .filter(attribute => attribute !== Post.primaryKey && !associations.includes(attribute))
-      .filter(attribute => !['string', 'text', 'boolean', 'integer', 'decimal', 'float'].includes(Post._attributes[attribute].type));
+          return acc;
+        case 'string':
+        case 'text':
+        case 'password':
+          return acc.concat({ [curr]: { $regex: params._q, $options: 'i' } });
+        case 'boolean':
+          if (params._q === 'true' || params._q === 'false') {
+            return acc.concat({ [curr]: params._q === 'true' });
+          }
 
-    const searchInt = Object.keys(Post._attributes)
-      .filter(attribute => attribute !== Post.primaryKey && !associations.includes(attribute))
-      .filter(attribute => ['integer', 'decimal', 'float'].includes(Post._attributes[attribute].type));
-
-    const searchBool = Object.keys(Post._attributes)
-      .filter(attribute => attribute !== Post.primaryKey && !associations.includes(attribute))
-      .filter(attribute => ['boolean'].includes(Post._attributes[attribute].type));
-
-    const query = (params._q || '').replace(/[^a-zA-Z0-9.-\s]+/g, '');
-
-    return Post.query(qb => {
-      // Search in columns which are not text value.
-      searchNoText.forEach(attribute => {
-        qb.orWhereRaw(`LOWER(${attribute}) LIKE '%${_.toLower(query)}%'`);
-      });
-
-      if (!_.isNaN(_.toNumber(query))) {
-        searchInt.forEach(attribute => {
-          qb.orWhereRaw(`${attribute} = ${_.toNumber(query)}`);
-        });
+          return acc;
+        default:
+          return acc;
       }
+    }, []);
 
-      if (query === 'true' || query === 'false') {
-        searchBool.forEach(attribute => {
-          qb.orWhereRaw(`${attribute} = ${_.toNumber(query === 'true')}`);
-        });
-      }
-
-      // Search in columns with text using index.
-      switch (Post.client) {
-        case 'mysql':
-          qb.orWhereRaw(`MATCH(${searchText.join(',')}) AGAINST(? IN BOOLEAN MODE)`, `*${query}*`);
-          break;
-        case 'pg': {
-          const searchQuery = searchText.map(attribute =>
-            _.toLower(attribute) === attribute
-              ? `to_tsvector(${attribute})`
-              : `to_tsvector('${attribute}')`
-          );
-
-          qb.orWhereRaw(`${searchQuery.join(' || ')} @@ to_tsquery(?)`, query);
-          break;
-        }
-      }
-
-      if (filters.sort) {
-        qb.orderBy(filters.sort.key, filters.sort.order);
-      }
-
-      if (filters.skip) {
-        qb.offset(_.toNumber(filters.skip));
-      }
-
-      if (filters.limit) {
-        qb.limit(_.toNumber(filters.limit));
-      }
-    }).fetchAll({
-      withRelated: populate
-    });
+    return Post
+      .find({ $or })
+      .sort(filters.sort)
+      .skip(filters.start)
+      .limit(filters.limit)
+      .populate(populate);
   }
 };
