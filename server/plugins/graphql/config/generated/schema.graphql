@@ -1,3 +1,27 @@
+input createInfoInput {
+  data: InfoInput
+}
+
+type createInfoPayload {
+  info: Info
+}
+
+input createPageInput {
+  data: PageInput
+}
+
+type createPagePayload {
+  page: Page
+}
+
+input createPostInput {
+  data: PostInput
+}
+
+type createPostPayload {
+  post: Post
+}
+
 input createRoleInput {
   data: RoleInput
 }
@@ -18,6 +42,30 @@ type createUserPayload {
 The `DateTime` scalar represents a date and time following the ISO 8601 standard
 """
 scalar DateTime
+
+input deleteInfoInput {
+  where: InputID
+}
+
+type deleteInfoPayload {
+  info: Info
+}
+
+input deletePageInput {
+  where: InputID
+}
+
+type deletePagePayload {
+  page: Page
+}
+
+input deletePostInput {
+  where: InputID
+}
+
+type deletePostPayload {
+  post: Post
+}
 
 input deleteRoleInput {
   where: InputID
@@ -46,6 +94,43 @@ input editFileInput {
   provider: String
   public_id: String
   related: [ID]
+}
+
+input editInfoInput {
+  address_ru: String
+  address_en: String
+  email: String
+  vkontakte: String
+  facebook: String
+  instagram: String
+  addresslink: String
+  phone: String
+}
+
+input editPageInput {
+  seotitle: String
+  seodescription: String
+  seokeywords: String
+  content_ru: String
+  content_en: String
+  title_ru: String
+  title_en: String
+  subtitle_ru: String
+  subtitle_en: String
+  slug: String
+}
+
+input editPostInput {
+  title_ru: String
+  title_en: String
+  seotitle: String
+  seodescription: String
+  slug: String
+  image: ID
+  seokeywords: String
+  content_ru: String
+  content_en: String
+  previewImage: ID
 }
 
 input editRoleInput {
@@ -80,6 +165,97 @@ input FileInput {
   related: [ID]
 }
 
+"""Общая информация (в хедере и футере)"""
+type Info {
+  _id: ID!
+  address_ru: String!
+  address_en: String!
+  email: String!
+  vkontakte: String!
+  facebook: String!
+  instagram: String!
+  addresslink: String!
+  phone: String!
+}
+
+type InfoAggregator {
+  count: Int
+}
+
+type InfoConnection {
+  values: [Info]
+  groupBy: InfoGroupBy
+  aggregate: InfoAggregator
+}
+
+type InfoConnection_id {
+  key: ID
+  connection: InfoConnection
+}
+
+type InfoConnectionAddress_en {
+  key: String
+  connection: InfoConnection
+}
+
+type InfoConnectionAddress_ru {
+  key: String
+  connection: InfoConnection
+}
+
+type InfoConnectionAddresslink {
+  key: String
+  connection: InfoConnection
+}
+
+type InfoConnectionEmail {
+  key: String
+  connection: InfoConnection
+}
+
+type InfoConnectionFacebook {
+  key: String
+  connection: InfoConnection
+}
+
+type InfoConnectionInstagram {
+  key: String
+  connection: InfoConnection
+}
+
+type InfoConnectionPhone {
+  key: String
+  connection: InfoConnection
+}
+
+type InfoConnectionVkontakte {
+  key: String
+  connection: InfoConnection
+}
+
+type InfoGroupBy {
+  _id: [InfoConnection_id]
+  address_ru: [InfoConnectionAddress_ru]
+  address_en: [InfoConnectionAddress_en]
+  email: [InfoConnectionEmail]
+  vkontakte: [InfoConnectionVkontakte]
+  facebook: [InfoConnectionFacebook]
+  instagram: [InfoConnectionInstagram]
+  addresslink: [InfoConnectionAddresslink]
+  phone: [InfoConnectionPhone]
+}
+
+input InfoInput {
+  address_ru: String!
+  address_en: String!
+  email: String!
+  vkontakte: String!
+  facebook: String!
+  instagram: String!
+  addresslink: String!
+  phone: String!
+}
+
 input InputID {
   id: ID!
 }
@@ -89,9 +265,19 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 """
 scalar JSON
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Info | createInfoPayload | updateInfoPayload | deleteInfoPayload | InfoConnection | InfoAggregator | InfoGroupBy | InfoConnection_id | InfoConnectionAddress_ru | InfoConnectionAddress_en | InfoConnectionEmail | InfoConnectionVkontakte | InfoConnectionFacebook | InfoConnectionInstagram | InfoConnectionAddresslink | InfoConnectionPhone | Page | createPagePayload | updatePagePayload | deletePagePayload | PageConnection | PageAggregator | PageGroupBy | PageConnection_id | PageConnectionSeotitle | PageConnectionSeodescription | PageConnectionSeokeywords | PageConnectionContent_ru | PageConnectionContent_en | PageConnectionTitle_ru | PageConnectionTitle_en | PageConnectionSubtitle_ru | PageConnectionSubtitle_en | PageConnectionSlug | Post | createPostPayload | updatePostPayload | deletePostPayload | PostConnection | PostAggregator | PostGroupBy | PostConnection_id | PostConnectionTitle_ru | PostConnectionTitle_en | PostConnectionSeotitle | PostConnectionSeodescription | PostConnectionSlug | PostConnectionImage | PostConnectionSeokeywords | PostConnectionContent_ru | PostConnectionContent_en | PostConnectionPreviewImage | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
 
 type Mutation {
+  createInfo(input: createInfoInput): createInfoPayload
+  updateInfo(input: updateInfoInput): updateInfoPayload
+  deleteInfo(input: deleteInfoInput): deleteInfoPayload
+  createPage(input: createPageInput): createPagePayload
+  updatePage(input: updatePageInput): updatePagePayload
+  deletePage(input: deletePageInput): deletePagePayload
+  createPost(input: createPostInput): createPostPayload
+  updatePost(input: updatePostInput): updatePostPayload
+  deletePost(input: deletePostInput): deletePostPayload
+
   """Create a new role"""
   createRole(input: createRoleInput): createRolePayload
 
@@ -112,7 +298,230 @@ type Mutation {
   upload(refId: ID, ref: String, source: String, file: Upload!): UploadFile!
 }
 
+"""Страница"""
+type Page {
+  _id: ID!
+  seotitle: String!
+  seodescription: String!
+  seokeywords: String!
+  content_ru: String!
+  content_en: String!
+  title_ru: String!
+  title_en: String!
+  subtitle_ru: String!
+  subtitle_en: String!
+  slug: String!
+}
+
+type PageAggregator {
+  count: Int
+}
+
+type PageConnection {
+  values: [Page]
+  groupBy: PageGroupBy
+  aggregate: PageAggregator
+}
+
+type PageConnection_id {
+  key: ID
+  connection: PageConnection
+}
+
+type PageConnectionContent_en {
+  key: String
+  connection: PageConnection
+}
+
+type PageConnectionContent_ru {
+  key: String
+  connection: PageConnection
+}
+
+type PageConnectionSeodescription {
+  key: String
+  connection: PageConnection
+}
+
+type PageConnectionSeokeywords {
+  key: String
+  connection: PageConnection
+}
+
+type PageConnectionSeotitle {
+  key: String
+  connection: PageConnection
+}
+
+type PageConnectionSlug {
+  key: String
+  connection: PageConnection
+}
+
+type PageConnectionSubtitle_en {
+  key: String
+  connection: PageConnection
+}
+
+type PageConnectionSubtitle_ru {
+  key: String
+  connection: PageConnection
+}
+
+type PageConnectionTitle_en {
+  key: String
+  connection: PageConnection
+}
+
+type PageConnectionTitle_ru {
+  key: String
+  connection: PageConnection
+}
+
+type PageGroupBy {
+  _id: [PageConnection_id]
+  seotitle: [PageConnectionSeotitle]
+  seodescription: [PageConnectionSeodescription]
+  seokeywords: [PageConnectionSeokeywords]
+  content_ru: [PageConnectionContent_ru]
+  content_en: [PageConnectionContent_en]
+  title_ru: [PageConnectionTitle_ru]
+  title_en: [PageConnectionTitle_en]
+  subtitle_ru: [PageConnectionSubtitle_ru]
+  subtitle_en: [PageConnectionSubtitle_en]
+  slug: [PageConnectionSlug]
+}
+
+input PageInput {
+  seotitle: String!
+  seodescription: String!
+  seokeywords: String!
+  content_ru: String!
+  content_en: String!
+  title_ru: String!
+  title_en: String!
+  subtitle_ru: String!
+  subtitle_en: String!
+  slug: String!
+}
+
+"""Новость"""
+type Post {
+  _id: ID!
+  title_ru: String!
+  title_en: String!
+  seotitle: String!
+  seodescription: String!
+  slug: String!
+  image: UploadFile
+  seokeywords: String!
+  content_ru: String!
+  content_en: String!
+  previewImage: UploadFile
+}
+
+type PostAggregator {
+  count: Int
+}
+
+type PostConnection {
+  values: [Post]
+  groupBy: PostGroupBy
+  aggregate: PostAggregator
+}
+
+type PostConnection_id {
+  key: ID
+  connection: PostConnection
+}
+
+type PostConnectionContent_en {
+  key: String
+  connection: PostConnection
+}
+
+type PostConnectionContent_ru {
+  key: String
+  connection: PostConnection
+}
+
+type PostConnectionImage {
+  key: ID
+  connection: PostConnection
+}
+
+type PostConnectionPreviewImage {
+  key: ID
+  connection: PostConnection
+}
+
+type PostConnectionSeodescription {
+  key: String
+  connection: PostConnection
+}
+
+type PostConnectionSeokeywords {
+  key: String
+  connection: PostConnection
+}
+
+type PostConnectionSeotitle {
+  key: String
+  connection: PostConnection
+}
+
+type PostConnectionSlug {
+  key: String
+  connection: PostConnection
+}
+
+type PostConnectionTitle_en {
+  key: String
+  connection: PostConnection
+}
+
+type PostConnectionTitle_ru {
+  key: String
+  connection: PostConnection
+}
+
+type PostGroupBy {
+  _id: [PostConnection_id]
+  title_ru: [PostConnectionTitle_ru]
+  title_en: [PostConnectionTitle_en]
+  seotitle: [PostConnectionSeotitle]
+  seodescription: [PostConnectionSeodescription]
+  slug: [PostConnectionSlug]
+  image: [PostConnectionImage]
+  seokeywords: [PostConnectionSeokeywords]
+  content_ru: [PostConnectionContent_ru]
+  content_en: [PostConnectionContent_en]
+  previewImage: [PostConnectionPreviewImage]
+}
+
+input PostInput {
+  title_ru: String!
+  title_en: String!
+  seotitle: String!
+  seodescription: String!
+  slug: String!
+  image: ID
+  seokeywords: String!
+  content_ru: String!
+  content_en: String!
+  previewImage: ID
+}
+
 type Query {
+  info(id: ID!): Info
+  infos(sort: String, limit: Int, start: Int, where: JSON): [Info]
+  infosConnection(sort: String, limit: Int, start: Int, where: JSON): InfoConnection
+  page(id: ID!): Page
+  pages(sort: String, limit: Int, start: Int, where: JSON): [Page]
+  pagesConnection(sort: String, limit: Int, start: Int, where: JSON): PageConnection
+  post(id: ID!): Post
+  posts(sort: String, limit: Int, start: Int, where: JSON): [Post]
+  postsConnection(sort: String, limit: Int, start: Int, where: JSON): PostConnection
   files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
   role(id: ID!): UsersPermissionsRole
@@ -134,6 +543,33 @@ input RoleInput {
   type: String
   permissions: [ID]
   users: [ID]
+}
+
+input updateInfoInput {
+  where: InputID
+  data: editInfoInput
+}
+
+type updateInfoPayload {
+  info: Info
+}
+
+input updatePageInput {
+  where: InputID
+  data: editPageInput
+}
+
+type updatePagePayload {
+  page: Page
+}
+
+input updatePostInput {
+  where: InputID
+  data: editPostInput
+}
+
+type updatePostPayload {
+  post: Post
 }
 
 input updateRoleInput {
