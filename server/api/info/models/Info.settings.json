@@ -1,47 +1,61 @@
 {
   "connection": "default",
-  "collectionName": "infos",
+  "collectionName": "info",
   "info": {
     "name": "info",
-    "description": ""
+    "description": "Общая информация (в хедере и футере)"
   },
   "options": {
-    "increments": true,
-    "timestamps": true,
-    "comment": ""
+    "timestamps": true
   },
   "attributes": {
     "address_ru": {
       "default": "",
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "minLength": 3
     },
     "address_en": {
       "default": "",
-      "type": "string"
-    },
-    "addresslink": {
-      "default": "",
-      "type": "string"
-    },
-    "phone": {
-      "default": "",
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "minLength": 3
     },
     "email": {
       "default": "",
-      "type": "email"
+      "type": "email",
+      "required": true,
+      "minLength": 5
     },
     "vkontakte": {
       "default": "",
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "minLength": 3
     },
     "facebook": {
       "default": "",
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "minLength": 3
     },
     "instagram": {
       "default": "",
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "minLength": 3
+    },
+    "addresslink": {
+      "default": "3",
+      "type": "string",
+      "required": true,
+      "minLength": 3
+    },
+    "phone": {
+      "default": "",
+      "type": "string",
+      "required": true,
+      "minLength": 3
     }
   }
 }
