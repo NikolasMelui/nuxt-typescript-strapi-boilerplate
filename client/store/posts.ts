@@ -66,8 +66,7 @@ export const actions: ActionTree<PostsState, RootState> = {
 				}
 				`
       )).data;
-      console.log(curData);
-      const curPosts: Post[] = [];
+      const curPosts: Array<Post> = [];
       const curTotalCount: number = curData.postsConnection.aggregate.count;
       curData.posts.forEach(post => {
         curPosts.push(post as Post);
@@ -81,7 +80,7 @@ export const actions: ActionTree<PostsState, RootState> = {
   },
   async morePosts({ commit }, payload) {
     try {
-      const posts: Post[] = (await strapiRequestService(
+      const posts: Array<Post> = (await strapiRequestService(
         `query {
 					posts (limit: 9, start: ${payload}) {
 						_id
@@ -104,7 +103,7 @@ export const actions: ActionTree<PostsState, RootState> = {
 				}
 				`
       )).data.posts;
-      const curPosts: Post[] = [];
+      const curPosts: Array<Post> = [];
       posts.forEach(post => {
         curPosts.push(post as Post);
       });
