@@ -1,14 +1,13 @@
 <template lang="pug">
-  div
+  main
     Toolbar
-    .main-container
+    .content
       nuxt
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "nuxt-property-decorator";
 
-// Import components
 import Toolbar from "~/components/Toolbar.vue";
 
 @Component({
@@ -20,6 +19,6 @@ export default class extends Vue {}
 </script>
 
 <style lang="sass">
-.main-container
+.content
   padding: 30px 10px
 </style>

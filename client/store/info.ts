@@ -30,7 +30,6 @@ export const mutations: MutationTree<InfoState> = {
 
 export const actions: ActionTree<InfoState, RootState> = {
   async nuxtServerInit({ commit }, { req }) {
-    console.log(req);
     try {
       const info: Info = (await strapiRequestService(`query {
         infos {
@@ -47,7 +46,6 @@ export const actions: ActionTree<InfoState, RootState> = {
       }
       `)).data.infos.pop();
       const curInfo: Info = info as Info;
-      console.log(curInfo);
       commit('setInfo', curInfo);
     } catch (error) {
       console.error(error);
