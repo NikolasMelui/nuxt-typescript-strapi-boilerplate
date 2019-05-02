@@ -1,8 +1,7 @@
 <template lang="pug">
   section
-    h1 Hello
-    div
-      ItemPost(v-for="post in posts" :key="post.id" :post="post")
+    h1 Multikey strapi template
+    ItemPost(v-for="post in posts" :key="post.id" :post="post")
 </template>
 
 <script lang="ts">
@@ -36,9 +35,17 @@ export default class extends Vue {
   @pagesModule.Getter("getMainPageSeoKeywords") seoKeywords: string;
 
   public async asyncData({ store, params, req }) {
-    await store.dispatch("pages/fetchPage", "Main");
+    await store.dispatch("pages/fetchPage", "main");
     await store.dispatch("posts/fetchPosts");
+    // const posts = await strapiRequestService(`query {
+    //   posts {
+    //       _id
+    //       title_ru
+    //     }
+    // }`);
+    // console.log(posts);
     const posts: Array<Post> = store.getters["posts/getPosts"];
+    // console.log(posts);
 
     return {
       posts
@@ -64,4 +71,6 @@ export default class extends Vue {
 </script>
 
 <style lang="sass">
+h1
+  margin: 10px;
 </style>
