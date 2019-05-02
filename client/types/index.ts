@@ -20,14 +20,8 @@ export interface SharedState {
 
 export interface Info {
   _id: string;
-  address_ru: string;
-  address_en: string;
-  addresslink: string;
   phone: string;
   email: string;
-  vkontakte: string;
-  facebook: string;
-  instagram: string;
 }
 
 export interface InfoState {
@@ -61,7 +55,7 @@ export interface Post {
   title_en: string;
   content_ru: string;
   content_en: string;
-  previewImage: Image;
+  previewimage: Image;
   image: Image;
 }
 
@@ -87,7 +81,7 @@ export interface PostPage {
   title_en: string;
   content_ru: string;
   content_en: string;
-  previewImage: Image;
+  previewimage: Image;
   image: Image;
 }
 
