@@ -40,6 +40,19 @@ export default {
       }
     ]
   },
+
+  /*
+   ** Static file generator
+   */
+  generate: {
+    async routes() {
+      return (await Promise.all([
+        (await axios.get(`${api_url}/posts`)).data.map(
+          post => `/posts/${post.slug}`
+        )
+      ])).flat(1);
+    }
+  },
   /*
    ** Customize the progress-bar color
    */

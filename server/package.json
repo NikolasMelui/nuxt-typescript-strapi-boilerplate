@@ -41,7 +41,7 @@
     "lodash": "^4.17.11",
     "strapi": "3.0.0-alpha.25.2",
     "strapi-email-nodemailer": "^0.2.1",
-    "strapi-hook-mongoose": "^3.0.0-alpha.13"
+    "strapi-hook-mongoose": "^3.0.0-alpha.25"
   },
   "strapi": {
     "packageManager": "npm",

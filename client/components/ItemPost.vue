@@ -1,7 +1,7 @@
 <template lang="pug">
-  nuxt-link(:to="`/post/${post.slug}`")
-    div
-      h3 {{post.title_ru}}
+  nuxt-link.post(:to="`/post/${post.slug}`")
+    h3 {{post.title_ru}}
+    img(:src="post.previewimage.url" :alt="post.title_ru" :title="post.title_ru")
 </template>
 
 <script lang="ts">
@@ -15,4 +15,9 @@ export default class ItemPost extends Vue {
 </script>
 
 <style lang="sass">
+.post
+  h3
+    color: wheat
+  img
+    max-width: 250px;
 </style>

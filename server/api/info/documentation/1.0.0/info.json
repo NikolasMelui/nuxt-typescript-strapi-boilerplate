@@ -510,113 +510,31 @@
     "schemas": {
       "Info": {
         "required": [
-          "id",
-          "address_ru",
-          "address_en",
-          "email",
-          "vkontakte",
-          "facebook",
-          "instagram",
-          "addresslink",
-          "phone"
+          "id"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "address_ru": {
+          "phone": {
             "type": "string",
-            "default": "",
-            "minLength": 3
-          },
-          "address_en": {
-            "type": "string",
-            "default": "",
-            "minLength": 3
+            "default": ""
           },
           "email": {
             "type": "string",
-            "default": "",
-            "minLength": 5
-          },
-          "vkontakte": {
-            "type": "string",
-            "default": "",
-            "minLength": 3
-          },
-          "facebook": {
-            "type": "string",
-            "default": "",
-            "minLength": 3
-          },
-          "instagram": {
-            "type": "string",
-            "default": "",
-            "minLength": 3
-          },
-          "addresslink": {
-            "type": "string",
-            "default": "3",
-            "minLength": 3
-          },
-          "phone": {
-            "type": "string",
-            "default": "",
-            "minLength": 3
+            "default": ""
           }
         }
       },
       "NewInfo": {
-        "required": [
-          "address_ru",
-          "address_en",
-          "email",
-          "vkontakte",
-          "facebook",
-          "instagram",
-          "addresslink",
-          "phone"
-        ],
         "properties": {
-          "address_ru": {
+          "phone": {
             "type": "string",
-            "default": "",
-            "minLength": 3
-          },
-          "address_en": {
-            "type": "string",
-            "default": "",
-            "minLength": 3
+            "default": ""
           },
           "email": {
             "type": "string",
-            "default": "",
-            "minLength": 5
-          },
-          "vkontakte": {
-            "type": "string",
-            "default": "",
-            "minLength": 3
-          },
-          "facebook": {
-            "type": "string",
-            "default": "",
-            "minLength": 3
-          },
-          "instagram": {
-            "type": "string",
-            "default": "",
-            "minLength": 3
-          },
-          "addresslink": {
-            "type": "string",
-            "default": "3",
-            "minLength": 3
-          },
-          "phone": {
-            "type": "string",
-            "default": "",
-            "minLength": 3
+            "default": ""
           }
         }
       }

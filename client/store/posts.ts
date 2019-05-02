@@ -51,7 +51,7 @@ export const actions: ActionTree<PostsState, RootState> = {
 						seotitle
 						seodescription
 						seokeywords
-						previewImage {
+						previewimage {
 							url
 						}
 						image {
@@ -96,7 +96,7 @@ export const actions: ActionTree<PostsState, RootState> = {
 						image {
 							url
 						}
-						previewImage {
+						previewimage {
 							url
 						}
 					},

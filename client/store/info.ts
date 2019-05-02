@@ -6,14 +6,8 @@ type InfoGetter = GetterTree<InfoState, RootState>;
 
 const clearInfoObject: Info = {
   _id: '',
-  address_ru: '',
-  address_en: '',
-  addresslink: '',
   phone: '',
-  email: '',
-  vkontakte: '',
-  facebook: '',
-  instagram: ''
+  email: ''
 };
 
 export const state: InfoState = {
