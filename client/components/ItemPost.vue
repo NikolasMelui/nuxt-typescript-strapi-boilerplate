@@ -1,7 +1,6 @@
 <template lang="pug">
   nuxt-link(:to="`/post/${post.slug}`")
-    div
-      h3 {{post.title_ru}}
+    h3 {{post.title_ru}}
 </template>
 
 <script lang="ts">
@@ -15,4 +14,7 @@ export default class ItemPost extends Vue {
 </script>
 
 <style lang="sass">
+h3
+  margin: 10px;
+  color: wheat;
 </style>
