@@ -15,7 +15,7 @@ const defaultPage: PostPage = {
   title_en: '',
   content_ru: '',
   content_en: '',
-  previewImage: {
+  previewimage: {
     url: ''
   },
   image: {
@@ -61,7 +61,7 @@ export const actions: ActionTree<PostPageState, RootState> = {
           seokeywords
           content_ru
           content_en
-          previewImage {
+          previewimage {
             url
           }
           image {
