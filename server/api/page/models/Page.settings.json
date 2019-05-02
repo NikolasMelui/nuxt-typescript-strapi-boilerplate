@@ -1,73 +1,60 @@
 {
   "connection": "default",
-  "collectionName": "page",
+  "collectionName": "",
   "info": {
     "name": "page",
-    "description": "Страница"
+    "description": ""
   },
   "options": {
     "timestamps": true
   },
   "attributes": {
-    "seotitle": {
-      "default": "",
-      "type": "string",
-      "required": true,
-      "minLength": 3
-    },
-    "seodescription": {
-      "default": "",
-      "type": "string",
-      "required": true,
-      "minLength": 3
-    },
-    "seokeywords": {
-      "default": "",
-      "type": "string",
-      "required": true,
-      "minLength": 3
-    },
-    "content_ru": {
-      "default": "",
-      "type": "text",
-      "required": true,
-      "minLength": 3
-    },
-    "content_en": {
-      "default": "",
-      "type": "text",
-      "required": true,
-      "minLength": 3
-    },
     "title_ru": {
       "default": "",
+      "minLength": 3,
       "type": "string",
-      "required": true,
-      "minLength": 3
+      "required": true
     },
     "title_en": {
       "default": "",
+      "minLength": 3,
       "type": "string",
-      "required": true,
-      "minLength": 3
-    },
-    "subtitle_ru": {
-      "default": "",
-      "type": "string",
-      "required": true,
-      "minLength": 3
-    },
-    "subtitle_en": {
-      "default": "",
-      "type": "string",
-      "required": true,
-      "minLength": 3
+      "required": true
     },
     "slug": {
       "default": "",
+      "unique": true,
+      "minLength": 3,
       "type": "string",
-      "required": true,
-      "minLength": 3
+      "required": true
+    },
+    "seotitle": {
+      "default": "",
+      "type": "string"
+    },
+    "seodescription": {
+      "default": "",
+      "type": "string"
+    },
+    "seokeywords": {
+      "default": "",
+      "type": "string"
+    },
+    "subtitle_ru": {
+      "default": "",
+      "type": "string"
+    },
+    "subtitle_en": {
+      "default": "",
+      "type": "string"
+    },
+    "content_ru": {
+      "default": "",
+      "type": "text"
+    },
+    "content_en": {
+      "default": "",
+      "type": "text"
     }
   }
 }

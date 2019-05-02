@@ -1,9 +1,9 @@
 {
   "connection": "default",
-  "collectionName": "post",
+  "collectionName": "",
   "info": {
     "name": "post",
-    "description": "Новость"
+    "description": ""
   },
   "options": {
     "timestamps": true
@@ -11,64 +11,54 @@
   "attributes": {
     "title_ru": {
       "default": "",
+      "minLength": 3,
       "type": "string",
-      "required": true,
-      "minLength": 3
+      "required": true
     },
     "title_en": {
       "default": "",
+      "minLength": 3,
       "type": "string",
-      "required": true,
-      "minLength": 3
-    },
-    "seotitle": {
-      "default": "",
-      "type": "string",
-      "required": true,
-      "minLength": 3
-    },
-    "seodescription": {
-      "default": "",
-      "type": "string",
-      "required": true,
-      "minLength": 3
+      "required": true
     },
     "slug": {
       "default": "",
-      "type": "string",
-      "required": true,
       "unique": true,
-      "minLength": 3
+      "minLength": 3,
+      "type": "string",
+      "required": true
+    },
+    "seotitle": {
+      "default": "",
+      "type": "string"
+    },
+    "seodescription": {
+      "default": "",
+      "type": "string"
+    },
+    "seokeywords": {
+      "default": "",
+      "type": "string"
+    },
+    "content_ru": {
+      "default": "",
+      "type": "text"
+    },
+    "content_en": {
+      "default": "",
+      "type": "text"
     },
     "image": {
       "model": "file",
       "via": "related",
       "plugin": "upload",
-      "required": true
+      "required": false
     },
-    "seokeywords": {
-      "default": "",
-      "type": "string",
-      "required": true,
-      "minLength": 3
-    },
-    "content_ru": {
-      "default": "",
-      "type": "text",
-      "required": true,
-      "minLength": 3
-    },
-    "content_en": {
-      "default": "",
-      "type": "text",
-      "required": true,
-      "minLength": 3
-    },
-    "previewImage": {
+    "previewimage": {
       "model": "file",
       "via": "related",
       "plugin": "upload",
-      "required": true
+      "required": false
     }
   }
 }

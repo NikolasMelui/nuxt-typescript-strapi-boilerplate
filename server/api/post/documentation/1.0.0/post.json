@@ -513,14 +513,7 @@
           "id",
           "title_ru",
           "title_en",
-          "seotitle",
-          "seodescription",
-          "slug",
-          "image",
-          "seokeywords",
-          "content_ru",
-          "content_en",
-          "previewImage"
+          "slug"
         ],
         "properties": {
           "id": {
@@ -536,20 +529,30 @@
             "default": "",
             "minLength": 3
           },
-          "seotitle": {
-            "type": "string",
-            "default": "",
-            "minLength": 3
-          },
-          "seodescription": {
-            "type": "string",
-            "default": "",
-            "minLength": 3
-          },
           "slug": {
             "type": "string",
             "default": "",
             "minLength": 3
+          },
+          "seotitle": {
+            "type": "string",
+            "default": ""
+          },
+          "seodescription": {
+            "type": "string",
+            "default": ""
+          },
+          "seokeywords": {
+            "type": "string",
+            "default": ""
+          },
+          "content_ru": {
+            "type": "string",
+            "default": ""
+          },
+          "content_en": {
+            "type": "string",
+            "default": ""
           },
           "image": {
             "required": [
@@ -597,22 +600,7 @@
               }
             }
           },
-          "seokeywords": {
-            "type": "string",
-            "default": "",
-            "minLength": 3
-          },
-          "content_ru": {
-            "type": "string",
-            "default": "",
-            "minLength": 3
-          },
-          "content_en": {
-            "type": "string",
-            "default": "",
-            "minLength": 3
-          },
-          "previewImage": {
+          "previewimage": {
             "required": [
               "id",
               "name",
@@ -664,12 +652,7 @@
         "required": [
           "title_ru",
           "title_en",
-          "seotitle",
-          "seodescription",
-          "slug",
-          "seokeywords",
-          "content_ru",
-          "content_en"
+          "slug"
         ],
         "properties": {
           "title_ru": {
@@ -682,35 +665,30 @@
             "default": "",
             "minLength": 3
           },
-          "seotitle": {
-            "type": "string",
-            "default": "",
-            "minLength": 3
-          },
-          "seodescription": {
-            "type": "string",
-            "default": "",
-            "minLength": 3
-          },
           "slug": {
             "type": "string",
             "default": "",
             "minLength": 3
           },
+          "seotitle": {
+            "type": "string",
+            "default": ""
+          },
+          "seodescription": {
+            "type": "string",
+            "default": ""
+          },
           "seokeywords": {
             "type": "string",
-            "default": "",
-            "minLength": 3
+            "default": ""
           },
           "content_ru": {
             "type": "string",
-            "default": "",
-            "minLength": 3
+            "default": ""
           },
           "content_en": {
             "type": "string",
-            "default": "",
-            "minLength": 3
+            "default": ""
           }
         }
       }

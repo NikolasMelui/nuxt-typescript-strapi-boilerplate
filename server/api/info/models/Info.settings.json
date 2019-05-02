@@ -3,59 +3,19 @@
   "collectionName": "info",
   "info": {
     "name": "info",
-    "description": "Общая информация (в хедере и футере)"
+    "description": ""
   },
   "options": {
     "timestamps": true
   },
   "attributes": {
-    "address_ru": {
+    "phone": {
       "default": "",
-      "type": "string",
-      "required": true,
-      "minLength": 3
-    },
-    "address_en": {
-      "default": "",
-      "type": "string",
-      "required": true,
-      "minLength": 3
+      "type": "string"
     },
     "email": {
       "default": "",
-      "type": "email",
-      "required": true,
-      "minLength": 5
-    },
-    "vkontakte": {
-      "default": "",
-      "type": "string",
-      "required": true,
-      "minLength": 3
-    },
-    "facebook": {
-      "default": "",
-      "type": "string",
-      "required": true,
-      "minLength": 3
-    },
-    "instagram": {
-      "default": "",
-      "type": "string",
-      "required": true,
-      "minLength": 3
-    },
-    "addresslink": {
-      "default": "3",
-      "type": "string",
-      "required": true,
-      "minLength": 3
-    },
-    "phone": {
-      "default": "",
-      "type": "string",
-      "required": true,
-      "minLength": 3
+      "type": "email"
     }
   }
 }

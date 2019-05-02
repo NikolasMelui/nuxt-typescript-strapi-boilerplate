@@ -511,46 +511,14 @@
       "Page": {
         "required": [
           "id",
-          "seotitle",
-          "seodescription",
-          "seokeywords",
-          "content_ru",
-          "content_en",
           "title_ru",
           "title_en",
-          "subtitle_ru",
-          "subtitle_en",
           "slug"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "seotitle": {
-            "type": "string",
-            "default": "",
-            "minLength": 3
-          },
-          "seodescription": {
-            "type": "string",
-            "default": "",
-            "minLength": 3
-          },
-          "seokeywords": {
-            "type": "string",
-            "default": "",
-            "minLength": 3
-          },
-          "content_ru": {
-            "type": "string",
-            "default": "",
-            "minLength": 3
-          },
-          "content_en": {
-            "type": "string",
-            "default": "",
-            "minLength": 3
-          },
           "title_ru": {
             "type": "string",
             "default": "",
@@ -561,62 +529,48 @@
             "default": "",
             "minLength": 3
           },
-          "subtitle_ru": {
-            "type": "string",
-            "default": "",
-            "minLength": 3
-          },
-          "subtitle_en": {
-            "type": "string",
-            "default": "",
-            "minLength": 3
-          },
           "slug": {
             "type": "string",
             "default": "",
             "minLength": 3
+          },
+          "seotitle": {
+            "type": "string",
+            "default": ""
+          },
+          "seodescription": {
+            "type": "string",
+            "default": ""
+          },
+          "seokeywords": {
+            "type": "string",
+            "default": ""
+          },
+          "subtitle_ru": {
+            "type": "string",
+            "default": ""
+          },
+          "subtitle_en": {
+            "type": "string",
+            "default": ""
+          },
+          "content_ru": {
+            "type": "string",
+            "default": ""
+          },
+          "content_en": {
+            "type": "string",
+            "default": ""
           }
         }
       },
       "NewPage": {
         "required": [
-          "seotitle",
-          "seodescription",
-          "seokeywords",
-          "content_ru",
-          "content_en",
           "title_ru",
           "title_en",
-          "subtitle_ru",
-          "subtitle_en",
           "slug"
         ],
         "properties": {
-          "seotitle": {
-            "type": "string",
-            "default": "",
-            "minLength": 3
-          },
-          "seodescription": {
-            "type": "string",
-            "default": "",
-            "minLength": 3
-          },
-          "seokeywords": {
-            "type": "string",
-            "default": "",
-            "minLength": 3
-          },
-          "content_ru": {
-            "type": "string",
-            "default": "",
-            "minLength": 3
-          },
-          "content_en": {
-            "type": "string",
-            "default": "",
-            "minLength": 3
-          },
           "title_ru": {
             "type": "string",
             "default": "",
@@ -627,20 +581,38 @@
             "default": "",
             "minLength": 3
           },
-          "subtitle_ru": {
-            "type": "string",
-            "default": "",
-            "minLength": 3
-          },
-          "subtitle_en": {
-            "type": "string",
-            "default": "",
-            "minLength": 3
-          },
           "slug": {
             "type": "string",
             "default": "",
             "minLength": 3
+          },
+          "seotitle": {
+            "type": "string",
+            "default": ""
+          },
+          "seodescription": {
+            "type": "string",
+            "default": ""
+          },
+          "seokeywords": {
+            "type": "string",
+            "default": ""
+          },
+          "subtitle_ru": {
+            "type": "string",
+            "default": ""
+          },
+          "subtitle_en": {
+            "type": "string",
+            "default": ""
+          },
+          "content_ru": {
+            "type": "string",
+            "default": ""
+          },
+          "content_en": {
+            "type": "string",
+            "default": ""
           }
         }
       }
