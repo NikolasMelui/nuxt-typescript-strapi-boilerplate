@@ -1,5 +1,5 @@
 <template lang="pug">
-  nuxt-link.post(:to="`/post/${post.slug}`")
+  nuxt-link.post(:to="`/posts/${post.slug}`")
     h3 {{post.title_ru}}
     img(:src="post.previewimage.url" :alt="post.title_ru" :title="post.title_ru")
 </template>

@@ -40,7 +40,9 @@ export default {
       }
     ]
   },
-
+  router: {
+    middleware: ['404', 'user-agent']
+  },
   /*
    ** Static file generator
    */

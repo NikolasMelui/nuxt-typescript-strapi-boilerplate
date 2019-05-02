@@ -1,5 +1,5 @@
 <template lang="pug">
-  h1.main Strapi multikey template
+  h1 Strapi multikey template
 </template>
 
 <script lang="ts">
@@ -15,8 +15,9 @@ export default class extends Vue {
   @pagesModule.Getter("getMainPageSeoDescription") seoDescription: string;
   @pagesModule.Getter("getMainPageSeoKeywords") seoKeywords: string;
 
-  public async asyncData({ store }) {
+  public async asyncData({ store, userAgent }) {
     await store.dispatch("pages/fetchPage", "Main");
+    console.log(userAgent);
   }
 
   head() {
@@ -38,6 +39,4 @@ export default class extends Vue {
 </script>
 
 <style lang="sass">
-.main
-  margin: 10px
 </style>
