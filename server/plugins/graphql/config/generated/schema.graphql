@@ -97,40 +97,34 @@ input editFileInput {
 }
 
 input editInfoInput {
-  address_ru: String
-  address_en: String
-  email: String
-  vkontakte: String
-  facebook: String
-  instagram: String
-  addresslink: String
   phone: String
+  email: String
 }
 
 input editPageInput {
+  title_ru: String
+  title_en: String
+  slug: String
   seotitle: String
   seodescription: String
   seokeywords: String
-  content_ru: String
-  content_en: String
-  title_ru: String
-  title_en: String
   subtitle_ru: String
   subtitle_en: String
-  slug: String
+  content_ru: String
+  content_en: String
 }
 
 input editPostInput {
   title_ru: String
   title_en: String
+  slug: String
   seotitle: String
   seodescription: String
-  slug: String
-  image: ID
   seokeywords: String
   content_ru: String
   content_en: String
-  previewImage: ID
+  image: ID
+  previewimage: ID
 }
 
 input editRoleInput {
@@ -165,17 +159,12 @@ input FileInput {
   related: [ID]
 }
 
-"""Общая информация (в хедере и футере)"""
 type Info {
   _id: ID!
-  address_ru: String!
-  address_en: String!
-  email: String!
-  vkontakte: String!
-  facebook: String!
-  instagram: String!
-  addresslink: String!
-  phone: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  phone: String
+  email: String
 }
 
 type InfoAggregator {
@@ -193,32 +182,12 @@ type InfoConnection_id {
   connection: InfoConnection
 }
 
-type InfoConnectionAddress_en {
-  key: String
-  connection: InfoConnection
-}
-
-type InfoConnectionAddress_ru {
-  key: String
-  connection: InfoConnection
-}
-
-type InfoConnectionAddresslink {
-  key: String
+type InfoConnectionCreatedAt {
+  key: DateTime
   connection: InfoConnection
 }
 
 type InfoConnectionEmail {
-  key: String
-  connection: InfoConnection
-}
-
-type InfoConnectionFacebook {
-  key: String
-  connection: InfoConnection
-}
-
-type InfoConnectionInstagram {
   key: String
   connection: InfoConnection
 }
@@ -228,32 +197,22 @@ type InfoConnectionPhone {
   connection: InfoConnection
 }
 
-type InfoConnectionVkontakte {
-  key: String
+type InfoConnectionUpdatedAt {
+  key: DateTime
   connection: InfoConnection
 }
 
 type InfoGroupBy {
   _id: [InfoConnection_id]
-  address_ru: [InfoConnectionAddress_ru]
-  address_en: [InfoConnectionAddress_en]
-  email: [InfoConnectionEmail]
-  vkontakte: [InfoConnectionVkontakte]
-  facebook: [InfoConnectionFacebook]
-  instagram: [InfoConnectionInstagram]
-  addresslink: [InfoConnectionAddresslink]
+  createdAt: [InfoConnectionCreatedAt]
+  updatedAt: [InfoConnectionUpdatedAt]
   phone: [InfoConnectionPhone]
+  email: [InfoConnectionEmail]
 }
 
 input InfoInput {
-  address_ru: String!
-  address_en: String!
-  email: String!
-  vkontakte: String!
-  facebook: String!
-  instagram: String!
-  addresslink: String!
-  phone: String!
+  phone: String
+  email: String
 }
 
 input InputID {
@@ -265,7 +224,7 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 """
 scalar JSON
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Info | createInfoPayload | updateInfoPayload | deleteInfoPayload | InfoConnection | InfoAggregator | InfoGroupBy | InfoConnection_id | InfoConnectionAddress_ru | InfoConnectionAddress_en | InfoConnectionEmail | InfoConnectionVkontakte | InfoConnectionFacebook | InfoConnectionInstagram | InfoConnectionAddresslink | InfoConnectionPhone | Page | createPagePayload | updatePagePayload | deletePagePayload | PageConnection | PageAggregator | PageGroupBy | PageConnection_id | PageConnectionSeotitle | PageConnectionSeodescription | PageConnectionSeokeywords | PageConnectionContent_ru | PageConnectionContent_en | PageConnectionTitle_ru | PageConnectionTitle_en | PageConnectionSubtitle_ru | PageConnectionSubtitle_en | PageConnectionSlug | Post | createPostPayload | updatePostPayload | deletePostPayload | PostConnection | PostAggregator | PostGroupBy | PostConnection_id | PostConnectionTitle_ru | PostConnectionTitle_en | PostConnectionSeotitle | PostConnectionSeodescription | PostConnectionSlug | PostConnectionImage | PostConnectionSeokeywords | PostConnectionContent_ru | PostConnectionContent_en | PostConnectionPreviewImage | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Info | createInfoPayload | updateInfoPayload | deleteInfoPayload | InfoConnection | InfoAggregator | InfoGroupBy | InfoConnection_id | InfoConnectionCreatedAt | InfoConnectionUpdatedAt | InfoConnectionPhone | InfoConnectionEmail | Page | createPagePayload | updatePagePayload | deletePagePayload | PageConnection | PageAggregator | PageGroupBy | PageConnection_id | PageConnectionCreatedAt | PageConnectionUpdatedAt | PageConnectionTitle_ru | PageConnectionTitle_en | PageConnectionSlug | PageConnectionSeotitle | PageConnectionSeodescription | PageConnectionSeokeywords | PageConnectionSubtitle_ru | PageConnectionSubtitle_en | PageConnectionContent_ru | PageConnectionContent_en | Post | createPostPayload | updatePostPayload | deletePostPayload | PostConnection | PostAggregator | PostGroupBy | PostConnection_id | PostConnectionCreatedAt | PostConnectionUpdatedAt | PostConnectionTitle_ru | PostConnectionTitle_en | PostConnectionSlug | PostConnectionSeotitle | PostConnectionSeodescription | PostConnectionSeokeywords | PostConnectionContent_ru | PostConnectionContent_en | PostConnectionImage | PostConnectionPreviewimage | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
 
 type Mutation {
   createInfo(input: createInfoInput): createInfoPayload
@@ -298,19 +257,20 @@ type Mutation {
   upload(refId: ID, ref: String, source: String, file: Upload!): UploadFile!
 }
 
-"""Страница"""
 type Page {
   _id: ID!
-  seotitle: String!
-  seodescription: String!
-  seokeywords: String!
-  content_ru: String!
-  content_en: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   title_ru: String!
   title_en: String!
-  subtitle_ru: String!
-  subtitle_en: String!
   slug: String!
+  seotitle: String
+  seodescription: String
+  seokeywords: String
+  subtitle_ru: String
+  subtitle_en: String
+  content_ru: String
+  content_en: String
 }
 
 type PageAggregator {
@@ -335,6 +295,11 @@ type PageConnectionContent_en {
 
 type PageConnectionContent_ru {
   key: String
+  connection: PageConnection
+}
+
+type PageConnectionCreatedAt {
+  key: DateTime
   connection: PageConnection
 }
 
@@ -378,46 +343,54 @@ type PageConnectionTitle_ru {
   connection: PageConnection
 }
 
+type PageConnectionUpdatedAt {
+  key: DateTime
+  connection: PageConnection
+}
+
 type PageGroupBy {
   _id: [PageConnection_id]
+  createdAt: [PageConnectionCreatedAt]
+  updatedAt: [PageConnectionUpdatedAt]
+  title_ru: [PageConnectionTitle_ru]
+  title_en: [PageConnectionTitle_en]
+  slug: [PageConnectionSlug]
   seotitle: [PageConnectionSeotitle]
   seodescription: [PageConnectionSeodescription]
   seokeywords: [PageConnectionSeokeywords]
-  content_ru: [PageConnectionContent_ru]
-  content_en: [PageConnectionContent_en]
-  title_ru: [PageConnectionTitle_ru]
-  title_en: [PageConnectionTitle_en]
   subtitle_ru: [PageConnectionSubtitle_ru]
   subtitle_en: [PageConnectionSubtitle_en]
-  slug: [PageConnectionSlug]
+  content_ru: [PageConnectionContent_ru]
+  content_en: [PageConnectionContent_en]
 }
 
 input PageInput {
-  seotitle: String!
-  seodescription: String!
-  seokeywords: String!
-  content_ru: String!
-  content_en: String!
   title_ru: String!
   title_en: String!
-  subtitle_ru: String!
-  subtitle_en: String!
   slug: String!
+  seotitle: String
+  seodescription: String
+  seokeywords: String
+  subtitle_ru: String
+  subtitle_en: String
+  content_ru: String
+  content_en: String
 }
 
-"""Новость"""
 type Post {
   _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   title_ru: String!
   title_en: String!
-  seotitle: String!
-  seodescription: String!
   slug: String!
+  seotitle: String
+  seodescription: String
+  seokeywords: String
+  content_ru: String
+  content_en: String
   image: UploadFile
-  seokeywords: String!
-  content_ru: String!
-  content_en: String!
-  previewImage: UploadFile
+  previewimage: UploadFile
 }
 
 type PostAggregator {
@@ -445,12 +418,17 @@ type PostConnectionContent_ru {
   connection: PostConnection
 }
 
+type PostConnectionCreatedAt {
+  key: DateTime
+  connection: PostConnection
+}
+
 type PostConnectionImage {
   key: ID
   connection: PostConnection
 }
 
-type PostConnectionPreviewImage {
+type PostConnectionPreviewimage {
   key: ID
   connection: PostConnection
 }
@@ -485,31 +463,38 @@ type PostConnectionTitle_ru {
   connection: PostConnection
 }
 
+type PostConnectionUpdatedAt {
+  key: DateTime
+  connection: PostConnection
+}
+
 type PostGroupBy {
   _id: [PostConnection_id]
+  createdAt: [PostConnectionCreatedAt]
+  updatedAt: [PostConnectionUpdatedAt]
   title_ru: [PostConnectionTitle_ru]
   title_en: [PostConnectionTitle_en]
+  slug: [PostConnectionSlug]
   seotitle: [PostConnectionSeotitle]
   seodescription: [PostConnectionSeodescription]
-  slug: [PostConnectionSlug]
-  image: [PostConnectionImage]
   seokeywords: [PostConnectionSeokeywords]
   content_ru: [PostConnectionContent_ru]
   content_en: [PostConnectionContent_en]
-  previewImage: [PostConnectionPreviewImage]
+  image: [PostConnectionImage]
+  previewimage: [PostConnectionPreviewimage]
 }
 
 input PostInput {
   title_ru: String!
   title_en: String!
-  seotitle: String!
-  seodescription: String!
   slug: String!
+  seotitle: String
+  seodescription: String
+  seokeywords: String
+  content_ru: String
+  content_en: String
   image: ID
-  seokeywords: String!
-  content_ru: String!
-  content_en: String!
-  previewImage: ID
+  previewimage: ID
 }
 
 type Query {
@@ -595,6 +580,8 @@ scalar Upload
 
 type UploadFile {
   _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   name: String!
   hash: String!
   sha256: String
@@ -619,6 +606,11 @@ type UploadFileConnection {
 
 type UploadFileConnection_id {
   key: ID
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCreatedAt {
+  key: DateTime
   connection: UploadFileConnection
 }
 
@@ -662,6 +654,11 @@ type UploadFileConnectionSize {
   connection: UploadFileConnection
 }
 
+type UploadFileConnectionUpdatedAt {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
 type UploadFileConnectionUrl {
   key: String
   connection: UploadFileConnection
@@ -669,6 +666,8 @@ type UploadFileConnectionUrl {
 
 type UploadFileGroupBy {
   _id: [UploadFileConnection_id]
+  createdAt: [UploadFileConnectionCreatedAt]
+  updatedAt: [UploadFileConnectionUpdatedAt]
   name: [UploadFileConnectionName]
   hash: [UploadFileConnectionHash]
   sha256: [UploadFileConnectionSha256]
