@@ -17,6 +17,11 @@ export default class extends Vue {
   @pagesModule.Getter("getMainPageSeoDescription") seoDescription: string;
   @pagesModule.Getter("getMainPageSeoKeywords") seoKeywords: string;
 
+  async asyncData({ store, userAgent }) {
+    await store.dispatch("pages/fetchPage", "Main");
+    console.log(userAgent);
+  }
+
   head() {
     return {
       title: this.seoTitle,
@@ -36,6 +41,4 @@ export default class extends Vue {
 </script>
 
 <style lang="sass">
-.main
-  margin: 10px
 </style>

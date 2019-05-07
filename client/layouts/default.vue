@@ -1,7 +1,7 @@
 <template lang="pug">
-  div
-    ToolBar
-    .main-container
+  main
+    Toolbar
+    .content
       nuxt
     BottomBar(:email="info.email" :phone="info.phone" :address="info.address" :addresslink="info.addresslink")
 </template>
@@ -26,6 +26,6 @@ export default class extends Vue {
 </script>
 
 <style lang="sass">
-.main-container
+.content
   padding: 30px 10px
 </style>
