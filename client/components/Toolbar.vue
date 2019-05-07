@@ -7,9 +7,10 @@
 </template>
 
 <script lang="ts">
-import { Vue } from "nuxt-property-decorator";
+import { Component, Prop, Vue } from "nuxt-property-decorator";
 
-export default class Toolbar extends Vue {}
+@Component
+export default class ToolBar extends Vue {}
 </script>
 
 <style lang="sass">
