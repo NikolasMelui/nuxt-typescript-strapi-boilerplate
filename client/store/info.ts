@@ -7,7 +7,9 @@ type InfoGetter = GetterTree<InfoState, RootState>;
 const clearInfoObject: Info = {
   _id: '',
   phone: '',
-  email: ''
+  email: '',
+  address: '',
+  addresslink: ''
 };
 
 export const state: InfoState = {
@@ -30,24 +32,18 @@ export const mutations: MutationTree<InfoState> = {
 
 export const actions: ActionTree<InfoState, RootState> = {
   async nuxtServerInit({ commit }, { req }) {
-    console.log(req);
     try {
       const info: Info = (await strapiRequestService(`query {
         infos {
           _id
-          address_ru
-          address_en
-          addresslink
           phone
           email
-          vkontakte
-          facebook
-          instagram
+          address
+          addresslink
         }
       }
       `)).data.infos.pop();
       const curInfo: Info = info as Info;
-      console.log(curInfo);
       commit('setInfo', curInfo);
     } catch (error) {
       console.error(error);
@@ -63,6 +59,6 @@ export const info: Module<InfoState, RootState> = {
   state,
   getters,
   actions,
-  mutations,
-  namespaced: true
+  mutations
+  // namespaced: true
 };

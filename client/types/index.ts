@@ -3,25 +3,18 @@ export interface RootState {
   info: InfoState;
   pages: PagesState;
   posts: PostsState;
-  shared: SharedState;
 }
 
 export interface Image {
   url: string;
 }
 
-export interface SharedState {
-  isMenuOpen: boolean;
-  isCallbackOpen: boolean;
-  isToolbarActive: boolean;
-  modalSettings: Object;
-  notification: Object;
-}
-
 export interface Info {
   _id: string;
   phone: string;
   email: string;
+  address: string;
+  addresslink: string;
 }
 
 export interface InfoState {
