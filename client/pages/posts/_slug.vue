@@ -20,13 +20,17 @@ const postPageModule = namespace("postPage");
   }
 })
 export default class extends Vue {
-  @postPageModule.Getter("getPostPage") postPage: PostPage;
   @postPageModule.Getter("getPostPageSeoTitle") seoTitle: string;
   @postPageModule.Getter("getPostPageSeoDescription") seoDescription: string;
   @postPageModule.Getter("getPostPageSeoKeywords") seoKeywords: string;
 
-  async asyncData({ store, params, req }) {
+  async asyncData({ store, params, req, redirect }) {
     await store.dispatch("postPage/fetchPostPage", params.slug);
+    const postPage = store.getters["postPage/getPostPage"];
+    if (typeof postPage === "undefined") redirect("/404");
+    return {
+      postPage
+    };
   }
 
   head() {
