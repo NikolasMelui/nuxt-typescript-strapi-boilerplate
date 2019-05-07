@@ -1,22 +1,28 @@
 <template lang="pug">
   div
-    Toolbar
+    ToolBar
     .main-container
       nuxt
+    BottomBar(:email="info.email" :phone="info.phone" :address="info.address" :addresslink="info.addresslink")
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "nuxt-property-decorator";
+import { Component, Prop, Vue } from "nuxt-property-decorator";
 
-// Import components
-import Toolbar from "~/components/Toolbar.vue";
+import ToolBar from "~/components/ToolBar.vue";
+import BottomBar from "~/components/BottomBar.vue";
+
+import { Info } from "~/types";
 
 @Component({
   components: {
-    Toolbar
+    ToolBar,
+    BottomBar
   }
 })
-export default class extends Vue {}
+export default class extends Vue {
+  info: Info = this.$store.getters.getInfo;
+}
 </script>
 
 <style lang="sass">
