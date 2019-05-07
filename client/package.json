@@ -1,9 +1,9 @@
 {
-  "name": "multikey-strapi-template-client",
+  "name": "nuxt-typescript-strapi-boilerplate",
   "license": "MIT",
   "private": true,
-  "version": "0.1.0",
-  "description": "Client side of Multikey Strapi Template powered by NikolasMelui and RinatDav for Multikey Studio.",
+  "version": "0.7.0",
+  "description": "Client side of nuxt-typescript-strapi-boilerplate powered by NikolasMelui and RinatDav.",
   "author": {
     "name": "nikolasmelui",
     "email": "slak@samaradom.ru",

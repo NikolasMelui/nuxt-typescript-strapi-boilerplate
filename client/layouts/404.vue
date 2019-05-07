@@ -1,7 +1,7 @@
 <template lang="pug">
   div
-    h2 Error layout
-    h3 {{error}}
+    h2 404 error layout
+    nuxt
 </template>
 
 <script lang="ts">
@@ -15,7 +15,6 @@ import ToolBar from "~/components/ToolBar.vue";
   }
 })
 export default class extends Vue {
-  @Prop(Object) error: Error;
   head() {
     return {
       title: "404",

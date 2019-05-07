@@ -1,21 +1,23 @@
 <template lang="pug">
-  h1 Strapi multikey template
+  div
+    h1.main Strapi multikey template
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "nuxt-property-decorator";
 import { State, Action, Getter, Mutation, namespace } from "vuex-class";
-import { RootState, Page } from "~/types";
+import { RootState, Page, Info } from "~/types";
 
 const pagesModule = namespace("pages");
 
+@Component
 export default class extends Vue {
   @pagesModule.Getter("getMainPage") mainPage: Page;
   @pagesModule.Getter("getMainPageSeotitle") seoTitle: string;
   @pagesModule.Getter("getMainPageSeoDescription") seoDescription: string;
   @pagesModule.Getter("getMainPageSeoKeywords") seoKeywords: string;
 
-  public async asyncData({ store, userAgent }) {
+  async asyncData({ store, userAgent }) {
     await store.dispatch("pages/fetchPage", "Main");
     console.log(userAgent);
   }

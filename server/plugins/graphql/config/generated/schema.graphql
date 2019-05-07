@@ -99,6 +99,8 @@ input editFileInput {
 input editInfoInput {
   phone: String
   email: String
+  address: String
+  addresslink: String
 }
 
 input editPageInput {
@@ -165,6 +167,8 @@ type Info {
   updatedAt: DateTime!
   phone: String
   email: String
+  address: String
+  addresslink: String
 }
 
 type InfoAggregator {
@@ -179,6 +183,16 @@ type InfoConnection {
 
 type InfoConnection_id {
   key: ID
+  connection: InfoConnection
+}
+
+type InfoConnectionAddress {
+  key: String
+  connection: InfoConnection
+}
+
+type InfoConnectionAddresslink {
+  key: String
   connection: InfoConnection
 }
 
@@ -208,11 +222,15 @@ type InfoGroupBy {
   updatedAt: [InfoConnectionUpdatedAt]
   phone: [InfoConnectionPhone]
   email: [InfoConnectionEmail]
+  address: [InfoConnectionAddress]
+  addresslink: [InfoConnectionAddresslink]
 }
 
 input InfoInput {
   phone: String
   email: String
+  address: String
+  addresslink: String
 }
 
 input InputID {
@@ -224,7 +242,7 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 """
 scalar JSON
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Info | createInfoPayload | updateInfoPayload | deleteInfoPayload | InfoConnection | InfoAggregator | InfoGroupBy | InfoConnection_id | InfoConnectionCreatedAt | InfoConnectionUpdatedAt | InfoConnectionPhone | InfoConnectionEmail | Page | createPagePayload | updatePagePayload | deletePagePayload | PageConnection | PageAggregator | PageGroupBy | PageConnection_id | PageConnectionCreatedAt | PageConnectionUpdatedAt | PageConnectionTitle_ru | PageConnectionTitle_en | PageConnectionSlug | PageConnectionSeotitle | PageConnectionSeodescription | PageConnectionSeokeywords | PageConnectionSubtitle_ru | PageConnectionSubtitle_en | PageConnectionContent_ru | PageConnectionContent_en | Post | createPostPayload | updatePostPayload | deletePostPayload | PostConnection | PostAggregator | PostGroupBy | PostConnection_id | PostConnectionCreatedAt | PostConnectionUpdatedAt | PostConnectionTitle_ru | PostConnectionTitle_en | PostConnectionSlug | PostConnectionSeotitle | PostConnectionSeodescription | PostConnectionSeokeywords | PostConnectionContent_ru | PostConnectionContent_en | PostConnectionImage | PostConnectionPreviewimage | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Info | createInfoPayload | updateInfoPayload | deleteInfoPayload | InfoConnection | InfoAggregator | InfoGroupBy | InfoConnection_id | InfoConnectionCreatedAt | InfoConnectionUpdatedAt | InfoConnectionPhone | InfoConnectionEmail | InfoConnectionAddress | InfoConnectionAddresslink | Page | createPagePayload | updatePagePayload | deletePagePayload | PageConnection | PageAggregator | PageGroupBy | PageConnection_id | PageConnectionCreatedAt | PageConnectionUpdatedAt | PageConnectionTitle_ru | PageConnectionTitle_en | PageConnectionSlug | PageConnectionSeotitle | PageConnectionSeodescription | PageConnectionSeokeywords | PageConnectionSubtitle_ru | PageConnectionSubtitle_en | PageConnectionContent_ru | PageConnectionContent_en | Post | createPostPayload | updatePostPayload | deletePostPayload | PostConnection | PostAggregator | PostGroupBy | PostConnection_id | PostConnectionCreatedAt | PostConnectionUpdatedAt | PostConnectionTitle_ru | PostConnectionTitle_en | PostConnectionSlug | PostConnectionSeotitle | PostConnectionSeodescription | PostConnectionSeokeywords | PostConnectionContent_ru | PostConnectionContent_en | PostConnectionImage | PostConnectionPreviewimage | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
 
 type Mutation {
   createInfo(input: createInfoInput): createInfoPayload

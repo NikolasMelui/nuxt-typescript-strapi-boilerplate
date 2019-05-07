@@ -1,21 +1,17 @@
 <template lang="pug">
-  div
-    h2 Error layout
-    h3 {{error}}
+  .404-error
+    h1 404
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "nuxt-property-decorator";
-
-import ToolBar from "~/components/ToolBar.vue";
+import { State, Action, Getter, Mutation, namespace } from "vuex-class";
+import { RootState, Page } from "~/types";
 
 @Component({
-  components: {
-    ToolBar
-  }
+  layout: "404"
 })
 export default class extends Vue {
-  @Prop(Object) error: Error;
   head() {
     return {
       title: "404",
@@ -35,4 +31,6 @@ export default class extends Vue {
 </script>
 
 <style lang="sass">
+  .404-error
+    margin: 10px
 </style>

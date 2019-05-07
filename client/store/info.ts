@@ -7,7 +7,9 @@ type InfoGetter = GetterTree<InfoState, RootState>;
 const clearInfoObject: Info = {
   _id: '',
   phone: '',
-  email: ''
+  email: '',
+  address: '',
+  addresslink: ''
 };
 
 export const state: InfoState = {
@@ -34,14 +36,10 @@ export const actions: ActionTree<InfoState, RootState> = {
       const info: Info = (await strapiRequestService(`query {
         infos {
           _id
-          address_ru
-          address_en
-          addresslink
           phone
           email
-          vkontakte
-          facebook
-          instagram
+          address
+          addresslink
         }
       }
       `)).data.infos.pop();
@@ -61,6 +59,6 @@ export const info: Module<InfoState, RootState> = {
   state,
   getters,
   actions,
-  mutations,
-  namespaced: true
+  mutations
+  // namespaced: true
 };

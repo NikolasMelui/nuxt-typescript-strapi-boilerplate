@@ -40,8 +40,18 @@ export default {
       }
     ]
   },
+  /*
+   ** Router
+   */
   router: {
-    middleware: ['404', 'user-agent']
+    // extendRoutes(routes, resolve) {
+    //   routes.push({
+    //     name: 'custom',
+    //     path: '/custom',
+    //     component: resolve(__dirname, 'pages/custom.vue')
+    //   });
+    // },
+    middleware: ['user-agent']
   },
   /*
    ** Static file generator
