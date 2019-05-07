@@ -1,7 +1,7 @@
 {
-  "name": "multikey-strapi-template",
+  "name": "nuxt-typescript-strapi-boilerplate",
   "version": "0.1.0",
-  "description": "Multikey Strapi Template powered by NikolasMelui and RinatDav for Multikey Studio.",
+  "description": "nuxt-typescript-strapi-boilerplate powered by NikolasMelui and RinatDav.",
   "author": {
     "name": "nikolasmelui",
     "email": "slak@samaradom.ru",
