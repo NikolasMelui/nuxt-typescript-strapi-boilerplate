@@ -1,7 +1,7 @@
 
-# Multikey-strapi-template
+# Nuxt-typescript-strapi-boilerplate
 
-🌈 Multikey Strapi Template powered by [NikolasMelui][nikolasmelui] and [RinatDav][rinatdav] for [multikey.studio][multikeystudio]
+🌈 Nuxt-typescript-strapi-boilerplate powered by [NikolasMelui][nikolasmelui] and [RinatDav][rinatdav].
 
 ***
 
@@ -30,6 +30,16 @@ Database:
 
 ```bash
 npm i && npm run install
+```
+
+### Quick start
+
+```bash
+cd server && npm run dev
+```
+
+```bash
+cd client && npm run dev
 ```
 
 ### Development
