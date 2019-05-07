@@ -523,6 +523,14 @@
           "email": {
             "type": "string",
             "default": ""
+          },
+          "address": {
+            "type": "string",
+            "default": ""
+          },
+          "addresslink": {
+            "type": "string",
+            "default": ""
           }
         }
       },
@@ -533,6 +541,14 @@
             "default": ""
           },
           "email": {
+            "type": "string",
+            "default": ""
+          },
+          "address": {
+            "type": "string",
+            "default": ""
+          },
+          "addresslink": {
             "type": "string",
             "default": ""
           }

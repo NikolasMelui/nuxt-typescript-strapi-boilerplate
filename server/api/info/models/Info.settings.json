@@ -16,6 +16,14 @@
     "email": {
       "default": "",
       "type": "email"
+    },
+    "address": {
+      "default": "",
+      "type": "string"
+    },
+    "addresslink": {
+      "default": "",
+      "type": "string"
     }
   }
 }
