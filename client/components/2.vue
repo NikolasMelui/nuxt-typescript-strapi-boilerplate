@@ -10,7 +10,7 @@
 import { Component, Prop, Vue } from "nuxt-property-decorator";
 
 @Component
-export default class BottomBar extends Vue {
+export default class Bottombar extends Vue {
   @Prop(String) email!: string;
   @Prop(String) phone!: string;
   @Prop(String) address!: string;
