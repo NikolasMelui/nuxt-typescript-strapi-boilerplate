@@ -3,21 +3,21 @@
     Toolbar
     .content
       nuxt
-    BottomBar(:email="info.email" :phone="info.phone" :address="info.address" :addresslink="info.addresslink")
+    Bottombar(:email="info.email" :phone="info.phone" :address="info.address" :addresslink="info.addresslink")
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "nuxt-property-decorator";
 
-import ToolBar from "~/components/ToolBar.vue";
-import BottomBar from "~/components/BottomBar.vue";
+import Toolbar from "~/components/Toolbar.vue";
+import Bottombar from "~/components/Bottombar.vue";
 
 import { Info } from "~/types";
 
 @Component({
   components: {
-    ToolBar,
-    BottomBar
+    Toolbar,
+    Bottombar
   }
 })
 export default class extends Vue {
